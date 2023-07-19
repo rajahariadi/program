@@ -1,37 +1,33 @@
 <?php
-
 include "component/koneksi.php";
-$pesan= "";
-session_start();
-if(isset($_SESSION['level'])){
-  header("location:index.php");
-}
 
-if(isset($_POST['login'])){
-  
+$message = "";
 
-    $userForm = $_POST['username'];
-    $passForm = $_POST['password'];
+if(isset($_POST['daftar'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $level = $_POST['level'];
 
-    $login ="SELECT * From tb_login WHERE username = '$userForm' AND password ='$passForm'";
-    $cek = mysqli_query($koneksi,$login);
+    // Validasi agar username dan password tidak kosong
+    if(empty($username) or empty($password) or empty($level) ){
+        $message = "Username dan password harus diisi.";
+    } else {
+        // Periksa apakah username sudah ada di database
+        $check_query = "SELECT * FROM tb_login WHERE username = '$username'";
+        $check_result = mysqli_query($koneksi, $check_query);
 
-    if($cek -> num_rows > 0){
-        $data= mysqli_fetch_assoc($cek);
-
-        if($data['level'] == "admin"){
-          $_SESSION['username'] = $userForm;
-          $_SESSION['level'] = "admin";
-          header("location:index.php");
+        if(mysqli_num_rows($check_result) > 0){
+            $message = "Username sudah ada. Silakan pilih username lain.";
+        } else {
+            // Jika username belum ada, lakukan pendaftaran
+            $data = "INSERT INTO tb_login (username, password, level) VALUES ('$username', '$password','$level')";
+            $hasil = mysqli_query($koneksi, $data);
+            if($hasil){
+                header("location:login.php");
+            } else {
+                echo "Pendaftaran gagal.";
+            }
         }
-        else if($data['level'] == "user"){
-          $_SESSION['username'] = $userForm;
-          $_SESSION['level'] = "user";
-          header("location:index.php");
-        }
-    }
-    else{
-        $pesan = "Login gagal periksa kembali username dan password";
     }
 }
 ?>
@@ -57,7 +53,7 @@ if(isset($_POST['login'])){
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/stt/logo.png" />
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -105,8 +101,7 @@ if(isset($_POST['login'])){
                 </a>
               </div>
               <!-- /Logo -->
-             
-              <p class="mb-4 text-center" >Sekolah Tinggi Teknologi Dumai</p>
+              <p class="mb-4 text-center">Sekolah Tinggi Teknologi Dumai</p>
 
               <form id="formAuthentication" class="mb-3" action="" method="POST">
                 <div class="mb-3">
@@ -136,18 +131,27 @@ if(isset($_POST['login'])){
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
                 </div>
+                <label for="email" class="form-label">Level User</label>
+
+                    <select name="level" id="" class="form-control">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                  
+                <div class="mb-3">  
+                </div>
                 <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit" name="login">Sign in</button>
-                  <p class="text-center" style="color: red;"><?php echo $pesan; ?></p>
+                  <button class="btn btn-primary d-grid w-100" name="daftar" type="submit">Sign in</button>
+                  <p class="text-center" style="color: red;"><?php echo $message; ?></p>
                 </div>
               </form>
-
               <p class="text-center">
-                <span>Baru di website kami ?</span>
-                <a href="daftar.php">
-                  <span>Buat Akun</span>
+                <a href="login.php">
+                <span>Sudah Punya Akun</span>
                 </a>
               </p>
+
+              
             </div>
           </div>
           <!-- /Register -->
