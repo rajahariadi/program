@@ -1,3 +1,6 @@
+<?php 
+ob_start();
+ ?>
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="index.php" class="app-brand-link">

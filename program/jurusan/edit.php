@@ -1,39 +1,42 @@
+// edit.php
+
+<?php
+include 'proses/koneksi.php';
+
+if (isset($_GET['id_jurusan'])) {
+    $id = $_GET['id_jurusan'];
+    $query = "SELECT * FROM tb_jurusan WHERE id_jurusan='$id_jurusan'";
+    $result = $koneksi->query($query);
+
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+    } else {
+        die("Data tidak ditemukan.");
+    }
+} else {
+    die("ID tidak ditemukan.");
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Jurusan</title>
 </head>
+
 <body>
-
-    <?php include "komponen/menu.php" ?>
-
-    <?php
-    include "proses/koneksi.php";
-    $id_jurusan = $_REQUEST['id_jurusan'];
-    $q = mysqli_query($koneksi, "SELECT * FROM tb_jurusan WHERE id_jurusan='$id_jurusan'");
-    $ary = mysqli_fetch_array($q);
-    ?>
-    
-    <form action="proses/ex_edit.php" method="POST" enctype="multipart/form-data">
-
-        <label for="">Nama Jurusan</label>
-        <input type="text" value="<?php echo $ary['nama_jurusan'] ?>" readonly name="nama_jurusan">
-        <br>
-
-        <label for="">Jumlah SKS</label>
-        <input type="text" name="jml_sks" value="<?php echo $ary['jml_sks'] ?>">
-        <br>
-
-        <label for="">Logo</label>
-        <input type="file" name="logo">
-        <br><br>
-        
-        <button type="submit" name="btn-simpan">Simpan</button>
-
+    <h1>Edit Jurusan</h1>
+    <form method="POST" action="ex_edit.php">
+        <input type="hidden" name="id_jurusan" value="<?php echo $row['id_jurusan']; ?>">
+        <label>Nama Jurusan:</label>
+        <input type="text" name="jurusan" value="<?php echo $row['jurusan']; ?>"><br>
+        <label>Jumlah SKS:</label>
+        <input type="text" name="sks" value="<?php echo $row['sks']; ?>"><br>
+        <label>Jenjang:</label>
+        <textarea name="jenjang"><?php echo $row['jenjang']; ?></textarea><br>
+        <input type="submit" value="Simpan">
     </form>
-
 </body>
+
 </html>

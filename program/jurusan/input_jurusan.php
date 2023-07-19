@@ -25,8 +25,10 @@
       </div>
 
       <div class="mb-3 row">
-        <label for="formFile" class="form-label">Logo Jurusan</label>
-          <input class="form-control" type="file"  name="logo" id="formFile">
+        <label for="html5-text-input" class="col-md-2 col-form-label">Jenjang</label>
+          <div class="col-md-10">
+            <input class="form-control" type="text" value="" name="jenjang" placeholder="Masukkan Jenjang Pendidikan"id="html5-text-input">
+          </div>                               
       </div>
 
       <button type="submit" name="input">Input</button>
