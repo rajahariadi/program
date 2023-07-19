@@ -12,5 +12,5 @@ $q = "INSERT INTO tb_jurusan (nama_jurusan, jml_sks, logo) VALUES('$jurusan','$s
 
 mysqli_query($koneksi, $q);
 
-header("location:../index.php?page=jurusan/data_jurusan");
+header("location:index.php?page=jurusan/data_jurusan");
 ?>
