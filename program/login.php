@@ -3,8 +3,12 @@
 include "component/koneksi.php";
 $pesan= "";
 session_start();
+if(isset($_SESSION['level'])){
+  header("location:index.php");
+}
 
 if(isset($_POST['login'])){
+  
 
     $userForm = $_POST['username'];
     $passForm = $_POST['password'];
@@ -31,11 +35,6 @@ if(isset($_POST['login'])){
     }
 }
 ?>
-
-
-
-
-
 
 <!DOCTYPE html>
 <html

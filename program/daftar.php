@@ -134,8 +134,8 @@ if(isset($_POST['daftar'])){
                 <label for="email" class="form-label">Level User</label>
 
                     <select name="level" id="" class="form-control">
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
                     </select>
                   
                 <div class="mb-3">  

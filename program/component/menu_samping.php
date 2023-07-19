@@ -1,3 +1,4 @@
+
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="index.php" class="app-brand-link">
@@ -69,19 +70,33 @@
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Dashboard</span></li>
             <li class="menu-item active">
               <a href="index.php?page=jurusan" class="menu-link">
-                <div data-i18n="Analytics">jurusan</div>
+                <div data-i18n="Analytics">Jurusan</div>
               </a>
             </li>
 
             <li class="menu-item active">
               <a href="index.php?page=kelas" class="menu-link">
-                <div data-i18n="Analytics">kelas</div>
+                <div data-i18n="Analytics">Kelas</div>
               </a>
             </li>
 
             <li class="menu-item active">
               <a href="index.php?page=mahasiswa" class="menu-link">
-                <div data-i18n="Analytics">data siswa</div>
+                <div data-i18n="Analytics">Data siswa</div>
+              </a>
+            </li>
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Settings</span></li>
+            
+            <li class="menu-item active">
+              <a href="" class="menu-link">
+                <div data-i18n="Analytics">Data User</div>
+              </a>
+            </li>
+            
+
+            <li class="menu-item active">
+              <a href="component/logout.php" class="menu-link">
+                <div data-i18n="Analytics">Logout</div>
               </a>
             </li>
           </ul>

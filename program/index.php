@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION['level'])){
+  header("location:login.php");
+}
+
 ?>
 
 
@@ -34,7 +38,8 @@ session_start();
               <div class="row">
                   <div class="card">
                         <div class="card-body">
-                         <?php include $_REQUEST['page'] . ".php" ?>
+                        <?php include $_REQUEST['page'] . ".php" ?>
+                        
                         
                          <p>Login sebagai : <?php echo $_SESSION['username'] ?> dengan level <?php echo $_SESSION['level'] ?> </p>
 
