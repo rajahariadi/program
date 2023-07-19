@@ -74,7 +74,7 @@
             </li>
 
             <li class="menu-item active">
-              <a href="index.php?page=kelas" class="menu-link">
+              <a href="index.php?page=kelas/kelas" class="menu-link">
                 <div data-i18n="Analytics">kelas</div>
               </a>
             </li>
