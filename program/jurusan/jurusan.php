@@ -11,7 +11,7 @@
   <?php include "komponen/menu.php" ?>
   <thead>
     <?php 
-    
+
     include "proses/koneksi.php";
     $data = mysqli_query($koneksi, "SELECT * FROM tb_jurusan");
 

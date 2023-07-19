@@ -19,9 +19,6 @@
         <li class="nav-item">
           <a class="nav-link" href="index.php?page=jurusan/input_jurusan">Input Jurusan</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?page=jurusan/jurusan">Data Jurusan</a>
-        </li>
       </ul>
     </div>
   </div>

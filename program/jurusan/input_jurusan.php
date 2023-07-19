@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,31 +7,29 @@
   <title></title>
 </head>
 <body>
-<form action="proses/ex_jurusan.php" method="POST" enctype="multipart/form-data">
-  <?php include "komponen/menu.php" ?>
+<form action="index.php?page=jurusan/ex_jurusan" method="POST" enctype="multipart/form-data">
   <h5 class="card-header">INPUT JURUSAN</h5>
     <div class="card-body">
-    <div class="mb-3 row">
-      <label for="html5-text-input" class="col-md-2 col-form-label">Nama Jurusan</label>
-        <div class="col-md-10">
-          <input class="form-control" type="text" value="" placeholder="Masukkan Nama Jurusan"id="html5-text-input">
-        </div>                               
-    </div>
+      <div class="mb-3 row">
+        <label for="html5-text-input" class="col-md-2 col-form-label">Nama Jurusan</label>
+          <div class="col-md-10">
+            <input class="form-control" type="text" value="" name="jurusan" placeholder="Masukkan Nama Jurusan"id="html5-text-input">
+          </div>                               
+      </div>
 
-    <div class="mb-3 row">
-      <label for="html5-text-input" class="col-md-2 col-form-label">Jumlah SKS</label>
-        <div class="col-md-10">
-          <input class="form-control" type="text" value="" placeholder="Masukkan Jumlah SKS"id="html5-text-input">
-        </div>                               
-    </div>
+      <div class="mb-3 row">
+        <label for="html5-text-input" class="col-md-2 col-form-label">Jumlah SKS</label>
+          <div class="col-md-10">
+            <input class="form-control" type="text" value="" name="sks" placeholder="Masukkan Jumlah SKS"id="html5-text-input">
+          </div>                               
+      </div>
 
-    <div class="mb-3 row">
-      <label for="formFile" class="form-label">Logo Jurusan</label>
-        <input class="form-control" type="file" id="formFile">
-    </div>
+      <div class="mb-3 row">
+        <label for="formFile" class="form-label">Logo Jurusan</label>
+          <input class="form-control" type="file"  name="logo" id="formFile">
+      </div>
 
-    <button class="btn btn-outline-primary" type="button" id="button-addon1">Input</button>
-
+      <button type="submit" name="input">Input</button>
     </div>
 </form>
 </body>
