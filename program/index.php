@@ -1,6 +1,9 @@
+<?php
+session_start();
+?>
+
 
 <!DOCTYPE html>
-
 <html
   lang="en"
   class="light-style layout-menu-fixed"
@@ -31,9 +34,9 @@
               <div class="row">
                   <div class="card">
                         <div class="card-body">
-                        <?php include $_REQUEST['page'] . ".php" ?>
+                         <?php include $_REQUEST['page'] . ".php" ?>
                         
-                         asdasdasd
+                         <p>Login sebagai : <?php echo $_SESSION['username'] ?> dengan level <?php echo $_SESSION['level'] ?> </p>
 
                           <h5 class="card-header">Table Basic</h5>
                                   <table class="table">      
