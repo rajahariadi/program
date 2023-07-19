@@ -43,7 +43,7 @@ if(!isset($_SESSION['level'])){
                         
                          <p>Login sebagai : <?php echo $_SESSION['username'] ?> dengan level <?php echo $_SESSION['level'] ?> </p>
 
-                          <h5 class="card-header">Table Basic</h5>
+                          <!-- <h5 class="card-header">Table Basic</h5>
                                   <table class="table">      
                                       <tr>
                                         <th>Project</th>
@@ -77,7 +77,7 @@ if(!isset($_SESSION['level'])){
                                     </tbody>
                                   </table>
                                  
-                         </div>
+                         </div> -->
                         </div>   
                         </div>
                 
