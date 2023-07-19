@@ -1,7 +1,7 @@
 <?php
 include 'proses/koneksi.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id_jurusan = $_POST['id_jurusan'];
     $jurusan = $_POST['jurusan'];
     $sks = $_POST['sks'];
     $jenjang = $_POST['jenjang'];
@@ -10,9 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $koneksi->query($query);
 
     if ($result) {
-        header('Location:index.php?page=jurusan/jurusan');
+        header('location:../index.php?page=jurusan');
     } else {
         echo "Gagal mengupdate data.";
     }
-}
 ?>

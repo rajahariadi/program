@@ -1,17 +1,8 @@
-// hapus.php
+<?php 
+$id_jurusan = $_REQUEST['id_jurusan'];
 
-<?php
-include 'proses/koneksi.php';
+include "proses/koneksi.php";
 
-if (isset($_GET['id_jurusan'])) {
-    $id = $_GET['id_jurusan'];
-    $query = "DELETE FROM tb_jurusan WHERE id_jurusan='$id_jurusan'";
-    $result = $koneksi->query($query);
+mysqli_query($koneksi, "DELETE FROM tb_jurusan WHERE id_jurusan ='$id_jurusan'");
 
-    if ($result) {
-        header('Location:index.php?page=jurusan/jurusan');
-    } else {
-        echo "Gagal menghapus data.";
-    }
-}
-?>
+header("location:index.php?page=jurusan/jurusan");

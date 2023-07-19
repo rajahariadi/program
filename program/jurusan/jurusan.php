@@ -28,7 +28,7 @@
       <td><?php echo $row['jenjang'] ;?></td>
       <td>
         <a href="edit.php?id=<?php echo $row['id_jurusan']; ?>">Edit</a>
-        <a href="hapus.php?id=<?php echo $row['id_jurusan']; ?>">Hapus</a>
+        <a href="jurusan/hapus.php?id=<?php echo $row['id_jurusan']; ?>">Hapus</a>
       </td>  
     </tr>
     <?php

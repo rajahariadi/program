@@ -7,7 +7,7 @@
   <title></title>
 </head>
 <body>
-<form action="index.php?page=jurusan/ex_jurusan" method="POST" enctype="multipart/form-data">
+<form action="index.php?page=jurusan/ex_jurusan" method="POST">
   <h5 class="card-header">INPUT JURUSAN</h5>
     <div class="card-body">
       <div class="mb-3 row">
