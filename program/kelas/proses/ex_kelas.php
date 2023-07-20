@@ -1,6 +1,7 @@
 <?php 
 
 $kelas = $_POST['kelas'];
+
 include "koneksi.php";
 
 $q = "INSERT INTO tb_kelas (kelas) VALUES('$kelas')";

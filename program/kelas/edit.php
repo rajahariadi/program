@@ -17,9 +17,13 @@
 <form action="index.php?page=kelas/proses/ex_edit" method="POST">
     <table>
         <tr>
+            <td><input type="hidden" value="<?php echo $ary['id_kelas'] ?>" name="id_kelas"></td>
+</tr>
+
+        <tr>
             <td>Kelas</td>
             <td>:</td>
-            <td><label for="">kelas</label> <input type="text" name="kelas" value="<?php echo $ary['kelas'] ?>"></td>
+            <td><input type="text" name="kelas" value="<?php echo $ary['kelas'] ?>"></td>
             <!-- <td><input type="text" name="kelas"></td> -->
         </tr>
         <tr>
