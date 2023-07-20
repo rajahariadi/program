@@ -30,15 +30,15 @@
     <td><?php echo $row['kelas'] ?></td>
 <td>
 <div class="dropdown">
-        <button type="button" class="btn p-0 dropdown-toggle hide-arrow show" data-bs-toggle="dropdown" aria-expanded="true">
+    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bx bx-dots-vertical-rounded"></i>
-        </button>
-    
-        <div class="dropdown-menu show" data-popper-placement="bottom-end" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(-77.6px, 27.2px, 0px);">
+    </button>
+
+    <div class="dropdown-menu" data-bs-popper="none">
         <a class="dropdown-item" href="index.php?page=kelas/edit&kode=<?php echo $row['id_kelas'] ?>"><i class="bx bx-edit-alt me-1"></i> Edit</a>
         <a class="dropdown-item" href="kelas/hapus.php?kode=<?php echo $row['id_kelas'] ?>"><i class="bx bx-trash me-1"></i> Delete</a>
-        </div>
     </div>
+</div>
         <!-- <a href="edit.php?kode=<?php echo $row['id_kelas'] ?>">Edit</a>
         <a href="kelas/hapus.php?kode=<?php echo $row['id_kelas'] ?>">Hapus</a>  -->
     </td>
