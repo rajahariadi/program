@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="index.php" class="app-brand-link">
@@ -81,7 +84,7 @@
 
             <li class="menu-item active">
               <a href="index.php?page=mahasiswa" class="menu-link">
-                <div data-i18n="Analytics">data siswa</div>
+                <div data-i18n="Analytics">Mahasiswa</div>
               </a>
             </li>
           </ul>

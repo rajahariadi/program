@@ -36,9 +36,9 @@ session_start();
                         <div class="card-body">
                          <?php include $_REQUEST['page'] . ".php" ?>
                         
-                         <p>Login sebagai : <?php echo $_SESSION['username'] ?> dengan level <?php echo $_SESSION['level'] ?> </p>
+                         <!-- <p>Login sebagai : <?php echo $_SESSION['username'] ?> dengan level <?php echo $_SESSION['level'] ?> </p> -->
 
-                          <h5 class="card-header">Table Basic</h5>
+                          <!-- <h5 class="card-header">Table Basic</h5>
                                   <table class="table">      
                                       <tr>
                                         <th>Project</th>
@@ -74,7 +74,7 @@ session_start();
                                  
                          </div>
                         </div>   
-                        </div>
+                        </div> -->
                 
                 </div>
               </div>
