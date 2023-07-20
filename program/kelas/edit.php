@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Data Kelas</title>
+    <title>Update Data Kelas</title>
 </head>
 <body>
 <?php
@@ -13,7 +13,7 @@
     $ary = mysqli_fetch_array($q);
     ?>
     
-<h5>Input Data Kelas</h5>
+<h5>Update Data Kelas</h5>
 <form action="index.php?page=kelas/proses/ex_edit" method="POST">
     <table>
         <tr>
@@ -23,7 +23,7 @@
         <tr>
             <td>Kelas</td>
             <td>:</td>
-            <td><input type="text" name="kelas" value="<?php echo $ary['kelas'] ?>"></td>
+            <td><input type="text" name="kelas" class="form-control" id="defaultFormControlInput" aria-describedbySS="defaultFormControlHelp" value="<?php echo $ary['kelas'] ?>"></td>
             <!-- <td><input type="text" name="kelas"></td> -->
         </tr>
         <tr>
