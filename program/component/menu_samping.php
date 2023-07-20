@@ -57,7 +57,7 @@
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+              <span class="app-brand-text text-uppercase demo menu-text fw-bolder ms-2">STT DUMAI</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -67,7 +67,8 @@
           <div class="menu-inner-shadow"></div>
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Dashboard</span></li>
+
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Home</span></li>
             <li class="menu-item active">
               <a href="index.php?page=jurusan" class="menu-link">
                 <div data-i18n="Analytics">Jurusan</div>
@@ -85,13 +86,17 @@
                 <div data-i18n="Analytics">Data siswa</div>
               </a>
             </li>
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Settings</span></li>
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Setting</span></li>
             
+            <?php 
+            if($_SESSION['level'] == 'admin') {
+            ?>
             <li class="menu-item active">
               <a href="" class="menu-link">
-                <div data-i18n="Analytics">Data User</div>
+                <div data-i18n="Analytics">Pengguna Sistem</div>
               </a>
             </li>
+            <?php } ?>
             
 
             <li class="menu-item active">
