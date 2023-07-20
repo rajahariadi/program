@@ -1,17 +1,24 @@
 <?php
 include 'proses/koneksi.php';
 
-    $id_jurusan = $_POST['id_jurusan'];
-    $jurusan = $_POST['jurusan'];
-    $sks = $_POST['sks'];
-    $jenjang = $_POST['jenjang'];
+    $kode = $_POST['kode'];
+    $jurusan = $_POST['nm_jurusan'];
+    $sks = $_POST['jm_sks'];
+    $jenjang = $_POST['jj'];
 
-    $query = "UPDATE tb_jurusan SET jurusan='$jurusan', sks='$sks', jenjang='$jenjang' WHERE id_jurusan='$id_jurusan'";
-    $result = $koneksi->query($query);
+    mysqli_query($koneksi, "UPDATE jurusan SET kode='$kode', nm_jurusan='$jurusan', jm_sks='$sks', jj='$jenjang' WHERE kode='$kode'");
 
-    if ($result) {
-        header('location:../index.php?page=jurusan');
-    } else {
-        echo "Gagal mengupdate data.";
-    }
+echo "Data Berhasil Di Update";
+echo '<br>';
+echo '<a href="index.php?page=jurusan"><button>Kembali</button></a>';
+
+
+    // $query = "UPDATE jurusan SET nm_jurusan='$jurusan', jm_sks='$sks', jj='$jenjang' WHERE kode='$kode';
+    // $result = $koneksi->query($query);
+
+    // if ($result) {
+    //     header('location:../index.php?page=jurusan');
+    // } else {
+    //     echo "Gagal mengupdate data";
+    // }
 ?>

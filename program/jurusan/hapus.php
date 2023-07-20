@@ -1,8 +1,13 @@
 <?php 
-$id_jurusan = $_REQUEST['id_jurusan'];
+$kode = $_REQUEST['kode'];
 
 include "proses/koneksi.php";
 
-mysqli_query($koneksi, "DELETE FROM tb_jurusan WHERE id_jurusan ='$id_jurusan'");
+// $q = mysqli_query($koneksi,"SELECT * FROM jurusan WHERE kode='$kode'");
+// $ary = mysqli_fetch_array($q);
 
-header("location:index.php?page=jurusan/jurusan");
+
+
+mysqli_query($koneksi, "DELETE FROM jurusan WHERE kode='$kode'");
+
+header("location:../index.php?page=jurusan");

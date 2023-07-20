@@ -71,7 +71,7 @@ ob_start();
             <!-- Dashboard -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Dashboard</span></li>
             <li class="menu-item active">
-              <a href="index.php?page=jurusan/jurusan" class="menu-link">
+              <a href="index.php?page=jurusan" class="menu-link">
                 <div data-i18n="Analytics">jurusan</div>
               </a>
             </li>
