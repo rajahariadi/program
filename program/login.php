@@ -4,7 +4,7 @@ include "component/koneksi.php";
 $pesan= "";
 session_start();
 if(isset($_SESSION['level'])){
-  header("location:index.php");
+  header("location:index.php?page=welcome");
 }
 
 if(isset($_POST['login'])){
@@ -22,12 +22,12 @@ if(isset($_POST['login'])){
         if($data['level'] == "admin"){
           $_SESSION['username'] = $userForm;
           $_SESSION['level'] = "admin";
-          header("location:index.php");
+          header("location:index.php?page=welcome");
         }
         else if($data['level'] == "user"){
           $_SESSION['username'] = $userForm;
           $_SESSION['level'] = "user";
-          header("location:index.php");
+          header("location:index.php?page=welcome");
         }
     }
     else{
@@ -101,7 +101,7 @@ if(isset($_POST['login'])){
               <!-- Logo -->
               <div class="app-brand justify-content-center">
               <img src="assets/img/stt/logo.png"  width=150px>
-                <a href="index.php" class="app-brand-link gap-2">
+                <a href="index.php?page=welcome" class="app-brand-link gap-2">
                 </a>
               </div>
               <!-- /Logo -->

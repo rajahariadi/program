@@ -8,7 +8,7 @@ ini form kelas
 </head>
 <body>
 <h2>Data Kelas</h2>
-<a href="index.php?page=kelas/form_kelas">Tambah</a>
+<a href="index.php?page=kelas/form_kelas" >Tambah</a>
 <table>
     <tr>
         <th>kelas</th>

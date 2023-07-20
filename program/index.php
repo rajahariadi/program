@@ -41,7 +41,7 @@ if(!isset($_SESSION['level'])){
                         <?php include $_REQUEST['page'] . ".php" ?>
                         
                         
-                         <p>Login sebagai : <?php echo $_SESSION['username'] ?> dengan level <?php echo $_SESSION['level'] ?> </p>
+                         <!-- <p>Login sebagai : <?php echo $_SESSION['username'] ?> dengan level <?php echo $_SESSION['level'] ?> </p> -->
 
                           <!-- <h5 class="card-header">Table Basic</h5>
                                   <table class="table">      

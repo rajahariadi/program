@@ -131,7 +131,7 @@ if(isset($_POST['daftar'])){
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
                 </div>
-                <label for="email" class="form-label">Level Login</label>
+                <label for="email" class="form-label">Level User</label>
 
                     <select name="level" id="" class="form-control">
                         <option value="User">User</option>
