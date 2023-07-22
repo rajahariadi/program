@@ -13,7 +13,7 @@
   <a href="../index.php?page=mahasiswa">Data</a> |
   <a href="../index.php?page=mahasiswa/input_mahasiswa">Input</a>
 
-  <?php 
+  <?php
   include "proses/koneksi.php";
 
   // Ambil kode nim dari URL
@@ -35,14 +35,17 @@
     <div>
       <input type="hidden" value="<?php echo $ary['id'] ?>" name="id">
       <label for="nim" class="form-label">Nim :</label>
-      <input type="text" name="nim" value="<?php echo $ary['nim'] ?>" class="form-control" placeholder="Nim" aria-describedby="defaultFormControlHelp">
+      <input type="text" name="nim" value="<?php echo $ary['nim'] ?>" class="form-control" placeholder="Nim"
+        aria-describedby="defaultFormControlHelp">
     </div>
     <div>
       <label for="nama" class="form-label">Nama :</label>
-      <input type="text" name="nama" value="<?php echo $ary['nama'] ?>" class="form-control" placeholder="Nama Mahasiswa" aria-describedby="defaultFormControlHelp">
+      <input type="text" name="nama" value="<?php echo $ary['nama'] ?>" class="form-control"
+        placeholder="Nama Mahasiswa" aria-describedby="defaultFormControlHelp">
     </div>
     <div class="col-md">
-      <label for="jeniskelamin" name="jeniskelamin" value="<?php echo $ary['jenis_kelamin'] ?>" class="form-label">Jenis Kelamin :</label>
+      <label for="jeniskelamin" name="jeniskelamin" value="<?php echo $ary['jenis_kelamin'] ?>" class="form-label">Jenis
+        Kelamin :</label>
       <div class="form-check mt-3">
         <input name="jeniskelamin" value="lakilaki" class="form-check-input" type="radio" id="defaultRadio1" <?php echo ($ary['jenis_kelamin'] == 'lakilaki') ? 'checked' : ''; ?>>
         <label class="form-check-label" for="defaultRadio1"> Laki-Laki </label>
@@ -55,17 +58,20 @@
 
     <div>
       <label for="defaultFormControlInput" class="form-label">No Telp :</label>
-      <input type="text" class="form-control" name="notelp" value="<?php echo $ary['no_telp'] ?>" id="defaultFormControlInput" placeholder="No Telp" aria-describedby="defaultFormControlHelp">
+      <input type="text" class="form-control" name="notelp" value="<?php echo $ary['no_telp'] ?>"
+        id="defaultFormControlInput" placeholder="No Telp" aria-describedby="defaultFormControlHelp">
     </div>
     <div>
       <label for="defaultFormControlInput" class="form-label">Alamat :</label>
-      <input type="text" class="form-control" name="alamat" value="<?php echo $ary['alamat'] ?>" id="defaultFormControlInput" placeholder="Alamat" aria-describedby="defaultFormControlHelp">
+      <input type="text" class="form-control" name="alamat" value="<?php echo $ary['alamat'] ?>"
+        id="defaultFormControlInput" placeholder="Alamat" aria-describedby="defaultFormControlHelp">
     </div>
     <div>
       <label for="defaultFormControlInput" class="form-label">Foto :</label>
-      <input type="file" class="form-control" name="foto" id="defaultFormControlInput" placeholder="" aria-describedby="defaultFormControlHelp">
+      <input type="file" class="form-control" name="foto" id="defaultFormControlInput" placeholder=""
+        aria-describedby="defaultFormControlHelp">
     </div>
-   
+
     <div>
       <button class="btn btn-outline-primary" type="submit" name="input" id="button-addon1">Input</button>
     </div>

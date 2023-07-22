@@ -16,11 +16,13 @@
     <div>
       <input type="hidden" name="id" id="">
       <label for="nim" class="form-label">Nim :</label>
-      <input type="text" name="nim" value="" class="form-control" placeholder="Nim" aria-describedby="defaultFormControlHelp">
+      <input type="text" name="nim" value="" class="form-control" placeholder="Nim"
+        aria-describedby="defaultFormControlHelp">
     </div>
     <div>
       <label for="nama" class="form-label">Nama :</label>
-      <input type="text" name="nama" class="form-control" placeholder="Nama Mahasiswa" aria-describedby="defaultFormControlHelp">
+      <input type="text" name="nama" class="form-control" placeholder="Nama Mahasiswa"
+        aria-describedby="defaultFormControlHelp">
     </div>
 
     <div class="mb-3">
@@ -32,11 +34,11 @@
         $query = "select * from jurusan";
         $hasil = mysqli_query($koneksi, $query);
         while ($row = mysqli_fetch_array($hasil)) {
-        ?>
+          ?>
           <option value="<?php echo $row['kode'] ?>">
             <?php echo $row['nm_jurusan'] ?>
           </option>
-        <?php
+          <?php
         }
         ?>
       </select>
@@ -52,11 +54,11 @@
           $query = "select * from tb_kelas";
           $hasil = mysqli_query($koneksi, $query);
           while ($row = mysqli_fetch_array($hasil)) {
-          ?>
+            ?>
             <option value="<?php echo $row['id_kelas'] ?>">
               <?php echo $row['kelas'] ?>
             </option>
-          <?php
+            <?php
           }
           ?>
         </select>
@@ -69,22 +71,26 @@
           <label class="form-check-label" for="defaultRadio1"> Laki-Laki </label>
         </div>
         <div class="form-check">
-          <input name="jeniskelamin" class="form-check-input" type="radio" value="perempuan" id="defaultRadio2" checked="">
+          <input name="jeniskelamin" class="form-check-input" type="radio" value="perempuan" id="defaultRadio2"
+            checked="">
           <label class="form-check-label" for="defaultRadio2"> Perempuan </label>
         </div>
       </div>
 
       <div>
         <label for="defaultFormControlInput" class="form-label">No Telp :</label>
-        <input type="text" class="form-control" name="notelp" id="defaultFormControlInput" placeholder="No Telp" aria-describedby="defaultFormControlHelp">
+        <input type="text" class="form-control" name="notelp" id="defaultFormControlInput" placeholder="No Telp"
+          aria-describedby="defaultFormControlHelp">
       </div>
       <div>
         <label for="defaultFormControlInput" class="form-label">Alamat :</label>
-        <input type="text" class="form-control" name="alamat" id="defaultFormControlInput" placeholder="Alamat" aria-describedby="defaultFormControlHelp">
+        <input type="text" class="form-control" name="alamat" id="defaultFormControlInput" placeholder="Alamat"
+          aria-describedby="defaultFormControlHelp">
       </div>
       <div>
         <label for="defaultFormControlInput" class="form-label">Foto :</label>
-        <input type="file" class="form-control" name="foto" id="defaultFormControlInput" placeholder="" aria-describedby="defaultFormControlHelp">
+        <input type="file" class="form-control" name="foto" id="defaultFormControlInput" placeholder=""
+          aria-describedby="defaultFormControlHelp">
       </div>
       <br>
       <div class="">
