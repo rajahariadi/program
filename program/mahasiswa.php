@@ -12,7 +12,7 @@
 
   <?php
 
-  if ($_SESSION['level'] == 'admin') {
+  if ($_SESSION['level'] == 'Administrator') {
     include "mahasiswa/proses/menu.php";
   }
 
@@ -30,7 +30,7 @@
             <th>Alamat</th>
             <th>Foto</th>
             <?php
-            if ($_SESSION['level'] == 'admin') {
+            if ($_SESSION['level'] == 'Administrator') {
               ?>
               <th>Actions</th>
               <?php
@@ -65,7 +65,7 @@
                   <a href="mahasiswa/foto/<?php echo $row['foto'] ?>">Download</a>
                 </td>
                 <?php
-                if ($_SESSION['level'] == 'admin') {
+                if ($_SESSION['level'] == 'Administrator') {
                   ?>
                   <td>
                     <a href="index.php?page=mahasiswa/edit&kode=<?= $row['id'] ?>">edit</a> |

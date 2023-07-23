@@ -44,7 +44,6 @@
       </select>
     </div>
     <div>
-
       <div class="mb-3">
         <label for="defaultSelect" class="form-label">Pilih Kelas</label>
         <select id="defaultSelect" class="form-select">

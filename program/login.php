@@ -28,13 +28,13 @@ if (isset($_POST['login'])) {
     if ($cek->num_rows > 0) {
       $data = mysqli_fetch_assoc($cek);
 
-      if ($data['level'] == "admin") {
+      if ($data['level'] == "Administrator") {
         $_SESSION['username'] = $userForm;
-        $_SESSION['level'] = "admin";
+        $_SESSION['level'] = "Administrator";
         header("location:index.php?page=welcome");
-      } else if ($data['level'] == "user") {
+      } else if ($data['level'] == "User") {
         $_SESSION['username'] = $userForm;
-        $_SESSION['level'] = "user";
+        $_SESSION['level'] = "User";
         header("location:index.php?page=welcome");
       }
     } else {

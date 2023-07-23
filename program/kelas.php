@@ -12,7 +12,7 @@
     <!-- <a href="index.php?page=kelas/form_kelas">Tambah</a> -->
     <?php
 
-    if ($_SESSION['level'] == 'admin') {
+    if ($_SESSION['level'] == 'Administrator') {
 
         ?>
         <a href="index.php?page=kelas/form_kelas"><button class="btn btn-outline-primary" type="submit" name="input"

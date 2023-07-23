@@ -30,7 +30,7 @@
             <th>Jumlah SKS</th>
             <th>Jenjang</th>
             <?php
-            if ($_SESSION['level'] == 'admin') {
+            if ($_SESSION['level'] == 'Administrator') {
               ?>
               <th>Action</th>
               <?php

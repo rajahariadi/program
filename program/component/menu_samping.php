@@ -47,7 +47,7 @@
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Settings</span></li>
 
     <?php
-    if ($_SESSION['level'] == 'admin') {
+    if ($_SESSION['level'] == 'Administrator') {
       ?>
       <li class="menu-item active">
         <a href="index.php?page=datauser" class="menu-link">

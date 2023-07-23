@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2023 at 12:59 PM
+-- Generation Time: Jul 23, 2023 at 09:38 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -72,7 +72,7 @@ CREATE TABLE `tb_login` (
   `nama` varchar(16) NOT NULL,
   `username` varchar(12) NOT NULL,
   `password` varchar(8) NOT NULL,
-  `level` varchar(8) NOT NULL
+  `level` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -80,9 +80,10 @@ CREATE TABLE `tb_login` (
 --
 
 INSERT INTO `tb_login` (`id`, `nama`, `username`, `password`, `level`) VALUES
-(6, 'Admin', 'admin', 'admin', 'admin'),
-(7, 'Raja Hariadi', 'rajahariadi', 'raja', 'user'),
-(8, 'Alip Lendri Prat', 'alip', 'alip', 'user');
+(6, 'Administrator', 'admin', 'admin', 'Administrator'),
+(14, 'User', 'User', 'User', 'User'),
+(15, 'Alip Lendri', 'alip', 'alip', 'Administrator'),
+(16, 'Raja Hariadi', 'raja', 'raja', 'Administrator');
 
 -- --------------------------------------------------------
 
@@ -159,7 +160,7 @@ ALTER TABLE `tb_kelas`
 -- AUTO_INCREMENT for table `tb_login`
 --
 ALTER TABLE `tb_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tb_mahasiswa`

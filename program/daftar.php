@@ -115,7 +115,7 @@ if (isset($_POST['daftar'])) {
 
             <form id="formAuthentication" class="mb-3" action="" method="POST">
               <div class="mb-3">
-                <label for="email" class="form-label">Nama</label>
+                <label for="email" class="form-label">Nama User</label>
                 <input type="text" class="form-control" id="email" name="nama" placeholder="Masukkan nama anda"
                   autofocus />
                 <p class="text-danger">
