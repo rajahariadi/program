@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2023 at 09:38 PM
+-- Generation Time: Jul 24, 2023 at 10:31 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -69,7 +69,7 @@ INSERT INTO `tb_kelas` (`id_kelas`, `kelas`) VALUES
 
 CREATE TABLE `tb_login` (
   `id` int(11) NOT NULL,
-  `nama` varchar(16) NOT NULL,
+  `nama` varchar(24) NOT NULL,
   `username` varchar(12) NOT NULL,
   `password` varchar(8) NOT NULL,
   `level` varchar(16) NOT NULL
@@ -82,7 +82,7 @@ CREATE TABLE `tb_login` (
 INSERT INTO `tb_login` (`id`, `nama`, `username`, `password`, `level`) VALUES
 (6, 'Administrator', 'admin', 'admin', 'Administrator'),
 (14, 'User', 'User', 'User', 'User'),
-(15, 'Alip Lendri', 'alip', 'alip', 'Administrator'),
+(15, 'Alip Lendri Pratama', 'alip', 'alip', 'Administrator'),
 (16, 'Raja Hariadi', 'raja', 'raja', 'Administrator');
 
 -- --------------------------------------------------------
