@@ -1,7 +1,7 @@
 <div class="card card-primary">
 	<div class="card-header">
 		<h3 class="card-title">
-			<i class="fa fa-edit"></i> Tambah Data User
+			<i class="fa fa-edit"></i> Edit Data User
 		</h3>
 	</div>
 	<?php
@@ -62,7 +62,7 @@
 			</div>
 			<br>
 
-			<<div class="form-group row">
+			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Level</label>
 				<div class="col-sm-4">
 					<select name="level" id="level" class="form-control">
