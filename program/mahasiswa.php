@@ -1,84 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="card card-info">
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fa fa-table"></i> Data Mahasiswa
+    </h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <div class="table-responsive">
+      <div>
+        <a href="index.php?page=mahasiswa/input_mahasiswa" class="btn btn-primary">
+          <i class="fa fa-edit"></i> Tambah Data</a>
+      </div>
+      <br>
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Nim</th>
+            <th>Nama</th>
+            <th>Jurusan</th>
+            <th>Kelas</th>
+            <th>Jenis Kelamin</th>
+            <th>No Telp</th>
+            <th>Alamat</th>
+            <th>Foto</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+          <?php
+          include "mahasiswa/proses/koneksi.php";
+          $data = mysqli_query($koneksi, "SELECT a.id, a.nim, a.nama, b.nm_jurusan, c.kelas, a.jenis_kelamin, a.no_telp, a.alamat, a.foto
+          FROM tb_mahasiswa a, jurusan b, tb_kelas c WHERE b.kode = a.kode AND a.id_kelas = c.id_kelas");
 
-<body>
+          while ($row = mysqli_fetch_array($data)) {
 
-  <div class="card">
-    <div class="card-body">
-      <h1>Data Mahasiswa</h1>
+          ?>
 
-      <?php
+            <tr>
+              <td>
+                <?php echo $row['nim'] ?>
+              </td>
+              <td>
+                <?php echo $row['nama'] ?>
+              </td>
+              <td>
+                <?php echo $row['nm_jurusan'] ?>
+              </td>
+              <td>
+                <?php echo $row['kelas'] ?>
+              </td>
+              <td>
+                <?php echo $row['jenis_kelamin'] ?>
+              </td>
+              <td>
+                <?php echo $row['no_telp'] ?>
+              </td>
+              <td>
+                <?php echo $row['alamat'] ?>
+              </td>
+              <td>
+                <a href="mahasiswa/foto/<?php echo $row['foto'] ?>">Download</a>
+              </td>
+              <td>
+                <a href="index.php?page=mahasiswa/edit&kode=<?php echo $row['id'] ?>" title="Ubah" class="btn btn-success btn-sm">
+                  <i class="fa fa-edit"></i>
+                </a>
+                <a href="mahasiswa/hapus.php?id=<?php echo $row['id'] ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" title="Hapus" class="btn btn-danger btn-sm">
+                  <i class="fa fa-trash"></i>
+                </a>
+              </td>
+            </tr>
 
-      if ($_SESSION['level'] == 'admin') {
-        include "mahasiswa/proses/menu.php";
-      }
-
-      ?>
-      <table>
-        <div class="card">
-
-          <div class="table-responsive text-nowrap">
-            <table class="table">
-              <tr>
-                <th>Nim</th>
-                <th>Nama</th>
-                <th>Jenis Kelamin</th>
-                <th>No Telp</th>
-                <th>Alamat</th>
-                <th>Foto</th>
-                <?php
-                if ($_SESSION['level'] == 'admin') {
-                ?>
-                  <th>Actions</th>
-                <?php
-                }
-                ?>
-              </tr>
-              <?php
-              include "mahasiswa/proses/koneksi.php";
-              $data = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa");
-
-              while ($row = mysqli_fetch_array($data)) {
-
-              ?>
-                <tbody class="table-border-bottom-0">
-                  <tr>
-                    <td><?= $row['nim'] ?></td>
-                    <td><?= $row['nama'] ?></td>
-                    <td><?= $row['jenis_kelamin'] ?></td>
-                    <td><?= $row['no_telp'] ?></td>
-                    <td><?= $row['alamat'] ?></td>
-                    <td>
-                      <a href="mahasiswa/foto/<?php echo $row['foto'] ?>">Download</a>
-                    </td>
-                    <?php
-                    if ($_SESSION['level'] == 'admin') {
-                    ?>
-                      <td>
-                        <a href="index.php?page=mahasiswa/edit&kode=<?= $row['id'] ?>">edit</a> |
-                        <a href="mahasiswa/hapus.php?kode=<?= $row['id'] ?>">hapus</a>
-                      </td>
-                    <?php
-                    }
-                    ?>
-                  </tr>
-                </tbody>
-              <?php
-              }
-              ?>
-            </table>
-          </div>
-        </div>
+          <?php
+          }
+          ?>
+        </tbody>
+        </tfoot>
       </table>
     </div>
   </div>
-
-</body>
-
-</html>
+  <!-- /.card-body -->

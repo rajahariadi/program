@@ -42,26 +42,49 @@ INSERT INTO `jurusan` (`kode`, `nm_jurusan`, `jm_sks`, `jj`) VALUES
 (8, 'Teknik Kimia', 120, 'S1');
 
 -- --------------------------------------------------------
-
 --
--- Table structure for table `tb_kelas`
+-- Struktur dari tabel `tb_kelas`
 --
 
 CREATE TABLE `tb_kelas` (
   `id_kelas` int(11) NOT NULL,
-  `kelas` varchar(10) DEFAULT NULL
+  `kelas` varchar(10) DEFAULT NULL,
+  `nm_jurusan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tb_kelas`
+-- Dumping data untuk tabel `tb_kelas`
 --
 
-INSERT INTO `tb_kelas` (`id_kelas`, `kelas`) VALUES
-(1, 'Pagi A'),
-(5, 'sore'),
-(6, 'Pagi B');
+INSERT INTO `tb_kelas` (`id_kelas`, `kelas`, `nm_jurusan`) VALUES
+(28, 'pagi g', 'teknik informatika'),
+(29, 'pagi', 'Teknik Kimia');
 
--- --------------------------------------------------------
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `tb_kelas`
+--
+ALTER TABLE `tb_kelas`
+  ADD PRIMARY KEY (`id_kelas`),
+  ADD KEY `id_jurusan` (`nm_jurusan`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_kelas`
+--
+ALTER TABLE `tb_kelas`
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 --
 -- Table structure for table `tb_login`

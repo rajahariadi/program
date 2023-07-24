@@ -1,51 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="card card-primary">
+	<div class="card-header">
+		<h3 class="card-title">
+			<i class="fa fa-edit"></i> Edit Data Mahasiswa
+		</h3>
+	</div>
+	<?php
+	include "proses/koneksi.php";
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahasiswa</title>
-</head>
+	// Ambil kode nim dari URL
+	$kode = $_REQUEST['kode'];
 
-<body>
+	// Query untuk mendapatkan data mahasiswa berdasarkan nim
+	$q = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa WHERE id='$kode'");
 
-  <a href="../index.php?page=mahasiswa">Data</a> |
-  <a href="../index.php?page=mahasiswa/input_mahasiswa">Input</a>
+	// Periksa apakah ada hasil dari query atau tidak
+	if (mysqli_num_rows($q) > 0) {
+		$ary = mysqli_fetch_array($q);
+	} else {
+		echo "Data mahasiswa tidak ditemukan.";
+		exit; // Berhenti eksekusi script jika data tidak ditemukan
+	}
+	?>
+	<form action="mahasiswa/ex_edit.php" method="post" enctype="multipart/form-data">
+		<div class="card-body">
+			<input type='hidden' class="form-control" name="id" value="<?php echo $ary['id']; ?>" />
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Nim</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="nim" name="nim" value="<?php echo $ary['nim']; ?>" />
+				</div>
+			</div>
+			<br>
 
-  <?php
-  include "proses/koneksi.php";
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Nama Mahasiswa</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="nama" name="nama"
+						value="<?php echo $ary['nama']; ?>" />
+				</div>
+			</div>
+			<br>
 
-  // Ambil kode nim dari URL
-  $kode = $_REQUEST['kode'];
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Jurusan</label>
+        <div class="col-sm-4">
+          <select name="jurusan" id="jurusan" class="form-control">
+            <?php 
+            //ambil data jurusan
+            $query = "SELECT * FROM jurusan ";
+            $hasil = mysqli_query($koneksi, $query);
+            while ($ary = mysqli_fetch_array($hasil)){
+              ?>
+              <option value = "<?= $row['kode']?>">
+              <?= $ary['nm_jurusan'] ?>
+            <?php
+            }
+            ?>
+          </select>
+        </div>
+      </div>
+      <br>
 
-  // Query untuk mendapatkan data mahasiswa berdasarkan nim
-  $q = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa WHERE id='$kode'");
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Kelas</label>
+        <div class="col-sm-4">
+          <select name="kelas" id="kelas" class="form-control">
+            <?php
+            //ambil data dari database
+            $query = "SELECT * FROM tb_kelas";
+            $hasil = mysqli_query($koneksi, $query);
+            while ($ary = mysqli_fetch_array($hasil)){
+              ?>
+              <option value="<?php echo $row['kode'] ?>">
+                <?php echo $ary['kelas'] ?>
+              </option>
+              <?php
+            }
+            ?>
+          </select>
+        </div>
+      </div>
+      <br>
 
-  // Periksa apakah ada hasil dari query atau tidak
-  if (mysqli_num_rows($q) > 0) {
-    $ary = mysqli_fetch_array($q);
-  } else {
-    echo "Data mahasiswa tidak ditemukan.";
-    exit; // Berhenti eksekusi script jika data tidak ditemukan
-  }
-  ?>
-
-  <form action="index.php?page=mahasiswa/ex_edit" method="POST" enctype="multipart/form-data">
-    <div>
-      <input type="hidden" value="<?php echo $ary['id'] ?>" name="id">
-      <label for="nim" class="form-label">Nim :</label>
-      <input type="text" name="nim" value="<?php echo $ary['nim'] ?>" class="form-control" placeholder="Nim"
-        aria-describedby="defaultFormControlHelp">
-    </div>
-    <div>
-      <label for="nama" class="form-label">Nama :</label>
-      <input type="text" name="nama" value="<?php echo $ary['nama'] ?>" class="form-control"
-        placeholder="Nama Mahasiswa" aria-describedby="defaultFormControlHelp">
-    </div>
-    <div class="col-md">
+      <div class="col-md">
       <label for="jeniskelamin" name="jeniskelamin" value="<?php echo $ary['jenis_kelamin'] ?>" class="form-label">Jenis
-        Kelamin :</label>
+        Kelamin </label>
       <div class="form-check mt-3">
         <input name="jeniskelamin" value="lakilaki" class="form-check-input" type="radio" id="defaultRadio1" <?php echo ($ary['jenis_kelamin'] == 'lakilaki') ? 'checked' : ''; ?>>
         <label class="form-check-label" for="defaultRadio1"> Laki-Laki </label>
@@ -55,28 +94,37 @@
         <label class="form-check-label" for="defaultRadio2"> Perempuan </label>
       </div>
     </div>
+      <br>
 
-    <div>
-      <label for="defaultFormControlInput" class="form-label">No Telp :</label>
-      <input type="text" class="form-control" name="notelp" value="<?php echo $ary['no_telp'] ?>"
-        id="defaultFormControlInput" placeholder="No Telp" aria-describedby="defaultFormControlHelp">
-    </div>
-    <div>
-      <label for="defaultFormControlInput" class="form-label">Alamat :</label>
-      <input type="text" class="form-control" name="alamat" value="<?php echo $ary['alamat'] ?>"
-        id="defaultFormControlInput" placeholder="Alamat" aria-describedby="defaultFormControlHelp">
-    </div>
-    <div>
-      <label for="defaultFormControlInput" class="form-label">Foto :</label>
-      <input type="file" class="form-control" name="foto" id="defaultFormControlInput" placeholder=""
-        aria-describedby="defaultFormControlHelp">
-    </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">No Telp</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="notelp" name="notelp" placeholder="No Telp" required>
+        </div>
+      </div>
+      <br>
+      
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Alamat</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="alamat" name="alamat" placeholder="No Telp" required>
+        </div>
+      </div>
+      <br>
 
-    <div>
-      <button class="btn btn-outline-primary" type="submit" name="input" id="button-addon1">Input</button>
-    </div>
-  </form>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Foto</label>
+        <div class="col-sm-6">
+          <input type="file" class="form-control" id="foto" name="foto" placeholder="" required>
+        </div>
+      </div>
+      <br>
 
-</body>
 
-</html>
+</div>
+<div class="card-footer">
+	<input type="submit" name="Ubah" value="Simpan" class="btn btn-success">
+	<a href="?page=datauser" title="Kembali" class="btn btn-secondary">Batal</a>
+</div>
+</form>
+</div>
