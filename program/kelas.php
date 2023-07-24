@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Kelas</title>
-</head>
-
-<body>
+<div class="card">
+    <div class="card-body">
     <h3 class="card-title"> <i class="fa fa-table"></i> Data Kelas</h3>
     <?php if ($_SESSION['level'] == 'Administrator') { ?>
         <a href="index.php?page=kelas/form_kelas" class="btn btn-primary">
@@ -51,6 +43,5 @@
             <?php } ?>
         </table>
     </div>
-</body>
-
-</html>
+    </div>
+</div>
