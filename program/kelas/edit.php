@@ -2,6 +2,7 @@
 </head>
 <body>
 <?php
+
     include "proses/koneksi.php";
     $kode = $_REQUEST['kode'];
     $q = mysqli_query($koneksi, "SELECT * FROM tb_kelas WHERE id_kelas='$kode'");
@@ -70,3 +71,5 @@
         </div>
     </form>
 </body>
+</html>
+</html>
