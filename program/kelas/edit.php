@@ -46,6 +46,7 @@
             </div>
         </div>
 
+        
         <div class="card-footer">
             <input type="submit" name="Simpan" value="Simpan" class="btn btn-info">
             <a href="?page=kelas" title="Kembali" class="btn btn-secondary">Batal</a>
