@@ -24,7 +24,8 @@
     <link rel="stylesheet" href="assets/vendor/fonts/boxicons.css" />
     <link rel="stylesheet" href="icon/css/all.css" />
     <link rel="stylesheet" href="assets/vendor/fonts/school-lock-solid.svga" />
-   
+
+    
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="assets/vendor/css/core.css" class="template-customizer-core-css" />

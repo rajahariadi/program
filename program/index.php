@@ -28,6 +28,41 @@ if(!isset($_SESSION['level'])){
         <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <!-- Search -->
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item d-flex align-items-center">
+                  <i class="bx bx-search fs-4 lh-0"></i>
+                  <input
+                    type="text"
+                    class="form-control border-0 shadow-none"
+                    placeholder="Search..."
+                    aria-label="Search..."
+                  />
+                </div>
+              </div>
+              <!-- /Search -->
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Place this tag where you want the button to render. -->
+                <li class="nav-item lh-1 me-3">
+                </li>
+
+                <!-- User -->
+      
+                <!--/ User -->
+              </ul>
+            </div>
+          </nav>
           <!-- / Navbar -->
 
           <!-- Content wrapper -->
@@ -36,48 +71,12 @@ if(!isset($_SESSION['level'])){
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
+              <?php include $_REQUEST['page'] . ".php" ?>
                   <div class="card">
                         <div class="card-body">
-                        <?php include $_REQUEST['page'] . ".php" ?>
                         
-                        
-                         <!-- <p>Login sebagai : <?php echo $_SESSION['username'] ?> dengan level <?php echo $_SESSION['level'] ?> </p> -->
-
-                          <!-- <h5 class="card-header">Table Basic</h5>
-                                  <table class="table">      
-                                      <tr>
-                                        <th>Project</th>
-                                        <th>Client</th>
-                                        <th>Users</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                      </tr>
-                                    <tbody class="table-border-bottom-0">
-                                      <tr>
-                                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
-                                        <td>Albert Cook</td>
-                                        <td> </td>
-                                        <td></td>
-                                        <td>
-                                          <div class="dropdown">
-                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                              <i class="bx bx-dots-vertical-rounded"></i>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                              <a class="dropdown-item" href="javascript:void(0);"
-                                                ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                                              >
-                                              <a class="dropdown-item" href="javascript:void(0);"
-                                                ><i class="bx bx-trash me-1"></i> Delete</a
-                                              >
-                                            </div>
-                                          </div>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                 
-                         </div> -->
+                      
+                       Login sebagai : <?php echo $_SESSION['username'] ?> dengan level <?php echo $_SESSION['level'] ?> </p> 
                         </div>   
                         </div>
                 

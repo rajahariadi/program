@@ -14968,6 +14968,9 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
   display: none !important;
 }
 
+.menu-item:hover{
+  color:#007bff
+}
 .menu-item {
   align-items: flex-start;
   justify-content: flex-start;
