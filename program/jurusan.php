@@ -1,85 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-
-</head>
-
-<body>
-  <h1>Data Jurusan</h1>
-
-  <?php
-
-  if ($_SESSION['level'] == 'admin') {
-    include "jurusan/proses/menu.php";
-  }
-
-  ?>
-
-
-  <table>
-    <div class="card">
-
-      <div class="table-responsive text-nowrap">
-        <table class="table">
-          <tr>
-            <th>NamaJurusan</th>
-            <th>Jumlah SKS</th>
-            <th>Jenjang</th>
-            <?php
-            if ($_SESSION['level'] == 'Administrator') {
-              ?>
-              <th>Action</th>
-              <?php
-            }
-            ?>
-          </tr>
-          <?php
-          include "jurusan/proses/koneksi.php";
-          $data = mysqli_query($koneksi, "SELECT * FROM jurusan");
-
-          while ($row = mysqli_fetch_array($data)) {
-
-            ?>
-            <tbody class="table-border-bottom-0">
-              <tr>
-                <td>
-                  <?= $row['nm_jurusan'] ?>
-                </td>
-                <td>
-                  <?= $row['jm_sks'] ?>
-                </td>
-                <td>
-                  <?= $row['jj'] ?>
-                </td>
-                <?php
-                if ($_SESSION['level'] == 'admin') {
-
-
-                  ?>
-                  <td>
-                    <a href="index.php?page=jurusan/edit&kode=<?php echo $row['kode'] ?>">Edit</a> |
-                    <a href="jurusan/hapus.php?kode=<?php echo $row['kode'] ?>">Hapus</a>
-                  </td>
-                  <?php
-                }
-                ?>
-              </tr>
-            </tbody>
-            <?php
-          }
-          ?>
-        </table>
-      </div>
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="fa fa-table"></i> Data Jurusan
+        </h3>
     </div>
-  </table>
-</body>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <div>
+                <a href="index.php?page=jurusan/input_jurusan" class="btn btn-primary">
+                    <i class="fa fa-edit"></i> Tambah Data Jurusan</a>
+            </div>
+            <br>
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Jurusan</th>
+                        <th>Sarana dan Prasarana</th>
+                        <th>Jenjang</th>
+                        <th>Akreditasi</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-</html>
+                    <?php
+                    include "jurusan/proses/koneksi.php";
+                    $no = 1;
+                    $data = mysqli_query($koneksi, "SELECT * FROM jurusan");
+                    while ($row = mysqli_fetch_array($data)) {
+                        ?>
 
-</body>
+                        <tr>
+                            <td>
+                                <?php echo $no++; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['nm_jurusan'] ?>
+                            </td>
+                            <td>
+                                <?php echo $row['sarpras'] ?>
+                            </td>
+                            <td>
+                                <?php echo $row['jj'] ?>
+                            </td>
+                            <td>
+                                <?php echo $row['akreditasi'] ?>
+                            </td>
+                            <td>
+                                <a href="index.php?page=jurusan/edit&kode=<?php echo $row['kode'] ?>" title="Ubah"
+                                    class="btn btn-success btn-sm">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="jurusan/hapus.php?kode=<?php echo $row['kode'] ?>""
+                                    onclick="return confirm('Apakah anda yakin hapus data ini ?')" title="Hapus"
+                                    class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
 
-</html>
+                        <?php
+                    }
+                    ?>
+                </tbody>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <!-- /.card-body -->

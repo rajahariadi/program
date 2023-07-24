@@ -1,16 +1,16 @@
 <?php
 
 $jurusan = $_POST['nm_jurusan'];
-$sks = $_POST['jm_sks'];
+$sarpras = $_POST['sarpras'];
 $jenjang = $_POST['jj'];
+$akre = $_POST['akreditasi'];
 
 include "proses/koneksi.php";
 
-$q = "INSERT INTO jurusan (nm_jurusan,jm_sks,jj) VALUES('$jurusan','$sks','$jenjang')";
+$q = "INSERT INTO jurusan (kode, nm_jurusan, sarpras, akreditasi, jj) VALUES ('$jurusan','$sarpras','$akre', '$jenjang')";
 
 mysqli_query($koneksi, $q);
- echo "Data Berhasil Di Tambahkan";
- echo '<br>';
- echo '<a href="index.php?page=jurusan"><button class="btn btn-outline-primary" type="submit" name="input" id="button-addon1">Kembali</button></a>';
+header("location:../index.php?page=jurusan");
+ob_end_flush();
 
 ?>

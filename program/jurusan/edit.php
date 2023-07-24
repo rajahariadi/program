@@ -1,56 +1,66 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Update Data Jurusan</title>
-</head>
-<body>
-    <?php
-    include "proses/koneksi.php";
-    $kode = $_REQUEST['kode'];
-    $q = mysqli_query($koneksi, "SELECT * FROM jurusan WHERE kode='$kode'");
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fa fa-edit"></i> Edit Data Jurusan
+    </h3>
+  </div>
+  <?php
+  include "proses/koneksi.php";
+
+  // Ambil kode jurusan dari URL
+  $kode = $_REQUEST['kode'];
+
+  // Query untuk mendapatkan data jurusan berdasarkan kode
+  $q = mysqli_query($koneksi, "SELECT * FROM jurusan WHERE kode='$kode'");
+
+  // Periksa apakah ada hasil dari query atau tidak
+  if (mysqli_num_rows($q) > 0) {
     $ary = mysqli_fetch_array($q);
-    ?>
-
-  <h5 class="card-header">INPUT JURUSAN</h5>
-  <form action="index.php?page=jurusan/ex_edit" method="POST">
-    <input type="hidden" value="<?php echo $ary['kode'] ?>" name="kode">
+  } else {
+    echo "Data jurusan tidak ditemukan.";
+    exit; // Berhenti eksekusi script jika data tidak ditemukan
+  }
+  ?>
+  <form action="jurusan/ex_edit.php" method="post" enctype="multipart/form-data">
     <div class="card-body">
-      <div class="mb-3 row">
-        <label for="html5-text-input" class="col-md-2 col-form-label">Nama Jurusan</label>
-          <div class="col-md-10">
-            <input class="form-control" type="text" value="" name="nm_jurusan" placeholder="Masukkan Nama Jurusan" id="html5-text-input">
-          </div>                               
+      <input type='hidden' class="form-control" name="id" value="<?php echo $ary['kode']; ?>" />
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Nama Jurusan</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="" name="jurusan" value="<?php echo $ary['nm_jurusan']; ?>" required/>
+        </div>
       </div>
+      <br>
 
-      <div class="mb-3 row">
-        <label for="html5-text-input" class="col-md-2 col-form-label">Jumlah SKS</label>
-          <div class="col-md-10">
-            <input class="form-control" type="text" value="" name="jm_sks" placeholder="Masukkan Jumlah SKS" id="html5-text-input">
-          </div>                               
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Sarana & Prasarana</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="" name="sarpras"
+            value="<?php echo $ary['sarpras']; ?>" required/>
+        </div>
       </div>
+      <br>
 
-      <div class="mb-3 row">
-        <label for="html5-text-input" class="col-md-2 col-form-label">Jenjang</label>
-          <div class="col-md-10">
-            <input class="form-control" type="text" value="" name="jj" placeholder="Masukkan Jenjang Pendidikan" id="html5-text-input">
-          </div>                               
-      </div>
+    <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Jenjang</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="" name="jenjang" value="<?php echo $ary['jj']; ?>" required/>
+                </div>
+            </div>
+            <br>
 
-      <!-- Tidak perlu input untuk kolom id_jurusan -->
+<div class="form-group row">
+                <label class="col-sm-2 col-form-label">Akreditasi</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="" name="akre" value="<?php echo $ary['akreditasi']; ?>"required>
+                </div>
+            </div>
+            <br>
 
-      <!-- Berikan name pada tombol agar dapat dikenali saat form di-submit -->
-      <button class="btn btn-outline-primary" type="submit" name="input" id="button-addon1">Input</button>
-    </div>
+</div>
+<div class="card-footer">
+  <input type="submit" name="Ubah" value="Simpan" class="btn btn-success">
+  <a href="?page=jurusan" title="Kembali" class="btn btn-secondary">Batal</a>
+</div>
 </form>
-</body>
-</html>
-
-
-
-<!-- <?php include "proses/menu.php" ?>
-<?php include "proses/koneksi.php";
-    $kode = isset($_GET['kode']); 
-    $q = mysqli_query($koneksi, "SELECT * FROM jurusan WHERE kode ='$kode'");
-        $ary = mysqli_fetch_array($q);?>
+</div>
