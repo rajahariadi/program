@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Data Kelas</title>
-</head>
-<body>
-<h5>Input Data Kelas</h5>
-<form action="index.php?page=kelas/proses/ex_kelas" method="POST">
-    <table>
-        <tr>
-            <td>Kelas</td>
-            <td>:</td>
-            <td><input name="kelas" type="text" class="form-control" id="defaultFormControlInput" placeholder="Masukkan Nama Kelas" aria-describedby="defaultFormControlHelp"></td>
-            <!-- <td><input type="text" name="kelas"></td> -->
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td><input class="btn btn-outline-primary" type="submit" name="login" id="button-addon1"></td>
-        </tr>
-    </table>
-</form>
 
+<head>
+
+</head>
+
+<body>
+    <h3 class="card-title"> <i class="fa fa-edit"></i> Input Data Kelas</h3>
+    <form action="index.php?page=kelas/proses/ex_kelas" method="post" enctype="multipart/form-data">
+        <div class="card-body">
+            <?php
+            $query = "SELECT nm_jurusan FROM jurusan";
+            $result = mysqli_query($koneksi, $query);
+            $data_array = array();
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data_array[] = $row;
+            }
+            ?>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Jurusan</label>
+                <div class="col-sm-6">
+                    <select name="nm_jurusan" class="form-control">
+                        <?php
+                        $sql = "SELECT nm_jurusan FROM jurusan";
+                        foreach ($data_array as $data) {
+                            $nm_jurusan = $data['nm_jurusan'];
+                            echo "<option value='$nm_jurusan'>$nm_jurusan</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+<br>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Kelas</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="defaultFormControlInput" name="kelas" placeholder="Masukkan Kelas" required>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <input type="submit" name="Simpan" value="Simpan" class="btn btn-info">
+                <a href="?page=kelas" title="Kembali" class="btn btn-secondary">Batal</a>
+        </div>
+    </form>
 </body>
+
 </html>
