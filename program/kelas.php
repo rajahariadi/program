@@ -1,76 +1,50 @@
 <div class="card">
     <div class="card-body">
-        <h1>Data Kelas</h1>
-        <!-- <a href="index.php?page=kelas/form_kelas">Tambah</a> -->
-        <?php
 
-        if ($_SESSION['level'] == 'admin') {
-
-        ?>
-            <a href="index.php?page=kelas/form_kelas"><button class="btn btn-outline-primary" type="submit" name="input" id="button-addon1">Tambah</button></a>
-        <?php
-        }
-        ?>
-        </br>
-        <br>
-        <table>
-            <div class="table-responsive text-nowrap">
-                <table class="table ">
-                    <thead>
-                        <tr>
-                            <th>kelas</th>
-                            <?php
-                            if ($_SESSION['level'] == 'admin') {
-                            ?>
-                                <th>action</th>
-
-                        </tr>
-                    <?php
-                            }
-                    ?>
-                    </thead>
-                    <?php
-                    include "kelas/proses/koneksi.php";
-                    $data = mysqli_query($koneksi, "SELECT * FROM tb_kelas");
-
-                    while ($row = mysqli_fetch_array($data)) { ?>
-                        <tbody class="table-border-bottom-0">
-
-
-                        </tbody class="table_border-bottom-0">
-                                <tr>
-                                    <td><?php echo $row['kelas'] ?></td>
-                                    <td>
-
-
-
-                                        <?php
-
-                                        if ($_SESSION['level'] == 'admin') {
-
-                                        ?>
-                                            <div class="dropdown">
-                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                </button>
-                                                <div class="dropdown-menu" data-bs-popper="none">
-                                                    <a class="dropdown-item" href="index.php?page=kelas/edit&kode=<?php echo $row['id_kelas'] ?>"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                    <a class="dropdown-item" href="kelas/hapus.php?kode=<?php echo $row['id_kelas'] ?>"><i class="bx bx-trash me-1"></i> Delete</a>
-                                                </div>
-                                            <?php
-                                        }
-                                            ?>
-                                            </div>
-                                            <!-- <a href="edit.php?kode=<?php echo $row['id_kelas'] ?>">Edit</a>
-                <a href="kelas/hapus.php?kode=<?php echo $row['id_kelas'] ?>">Hapus</a>  -->
-                                    </td>
-                                </tr>
-                        </tbody>
-                    <?php
-                    }
-                    ?>
-                </table>
-
+    <h3 class="card-title"> <i class="fa fa-table"></i> Data Kelas</h3>
+    <?php if ($_SESSION['level'] == 'Administrator') { ?>
+        <a href="index.php?page=kelas/form_kelas" class="btn btn-primary">
+            <i class="fa fa-edit"></i> Tambah Data
+        </a>
+    <?php } ?>
+    <br><br>
+    <div class="table-responsive">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>jurusan</th>
+                    <th>kelas</th>
+                    <?php if ($_SESSION['level'] == 'Administrator') { ?>
+                        <th>action</th>
+                    <?php } ?>
+                </tr>
+            </thead>
+            <?php
+            include "kelas/proses/koneksi.php";
+            $data = mysqli_query($koneksi, "SELECT * FROM tb_kelas");
+            while ($row = mysqli_fetch_array($data)) {
+            ?>
+                <tr>
+                    <td><?php echo $row['nm_jurusan'] ?></td>
+                    <td><?php echo $row['kelas'] ?></td>
+                    <td>
+                        <?php if ($_SESSION['level'] == 'Administrator') { ?>
+                            <a href="index.php?page=kelas/edit&kode=<?php echo $row['id_kelas'] ?>" title="Ubah"
+                                class="btn btn-success btn-sm">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="kelas/hapus.php?kode=<?php echo $row['id_kelas'] ?>"
+                                onclick="return confirm('Apakah anda yakin hapus data ini ?')" title="Hapus"
+                                class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        <?php } ?>
+                    </td>
+                </tr>
+            <?php } ?>
+        </table>
+    </div>
 
             </div>
     </div>
+
