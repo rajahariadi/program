@@ -1,3 +1,6 @@
+<?php 
+include "koneksi.php"
+ ?>
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
   <div class="app-brand demo">
     <a href="index.php?page=welcome" class="app-brand-link">
@@ -9,7 +12,6 @@
       <i class="bx bx-chevron-left bx-sm align-middle"></i>
     </a>
   </div>
-  <?php include "koneksi.php" ?>
   <li style="margin-left: 30px;" class=" small text-uppercase"><span class="menu-header-text">welcome
       <?php
       $nama = $_SESSION['username'];
