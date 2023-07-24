@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "proses/koneksi.php";
 $id = $_POST['id'];
 $nim = $_POST['nim'];

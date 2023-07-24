@@ -1,181 +1,179 @@
 <?php
-
-include "component/koneksi.php";
-$pesan= "";
 session_start();
-if(isset($_SESSION['level'])){
+include "component/koneksi.php";
+$pesanuser = "";
+$pesanpass = "";
+$pesan = "";
+
+if (isset($_SESSION['level'])) {
   header("location:index.php?page=welcome");
 }
 
-if(isset($_POST['login'])){
-  
+if (isset($_POST['login'])) {
 
-    $userForm = $_POST['username'];
-    $passForm = $_POST['password'];
+  $userForm = $_POST['username'];
+  $passForm = $_POST['password'];
 
-    $login ="SELECT * From tb_login WHERE username = '$userForm' AND password ='$passForm'";
-    $cek = mysqli_query($koneksi,$login);
+  if (empty($userForm) && empty($passForm)) {
+    $pesan = "Username dan password tidak boleh kosong";
+  } elseif (empty($userForm)) {
+    $pesanuser = "Username harus diisi";
+  } elseif (empty($passForm)) {
+    $pesanpass = "Password harus diisi";
+  } else {
 
-    if($cek -> num_rows > 0){
-        $data= mysqli_fetch_assoc($cek);
+    $login = "SELECT * From tb_login WHERE username = '$userForm' AND password ='$passForm'";
+    $cek = mysqli_query($koneksi, $login);
 
-        if($data['level'] == "admin"){
-          $_SESSION['username'] = $userForm;
-          $_SESSION['level'] = "admin";
-          header("location:index.php?page=welcome");
-        }
-        else if($data['level'] == "user"){
-          $_SESSION['username'] = $userForm;
-          $_SESSION['level'] = "user";
-          header("location:index.php?page=welcome");
-        }
+    if ($cek->num_rows > 0) {
+      $data = mysqli_fetch_assoc($cek);
+
+      if ($data['level'] == "Administrator") {
+        $_SESSION['username'] = $userForm;
+        $_SESSION['level'] = "Administrator";
+        header("location:index.php?page=welcome");
+      } else if ($data['level'] == "User") {
+        $_SESSION['username'] = $userForm;
+        $_SESSION['level'] = "User";
+        header("location:index.php?page=welcome");
+      }
+    } else {
+      $pesan = "Username atau password salah";
     }
-    else{
-        $pesan = "Login gagal periksa kembali username dan password";
-    }
+  }
 }
 ?>
 
 <!DOCTYPE html>
-<html
-  lang="en"
-  class="light-style customizer-hide"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="assets/"
-  data-template="vertical-menu-template-free"
->
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
+<html lang="en" class="light-style customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="assets/"
+  data-template="vertical-menu-template-free">
 
-    <title>Login Basic web sekolah tinggi teknologi dumai</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <meta name="description" content="" />
+  <title>AcademiX</title>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/stt/logo.png" />
+  <meta name="description" content="" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/img/stt/logo.png" />
 
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="assets/vendor/fonts/boxicons.css" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="assets/css/demo.css" />
+  <!-- Icons. Uncomment required icon fonts -->
+  <link rel="stylesheet" href="assets/vendor/fonts/boxicons.css" />
 
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="assets/vendor/css/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="assets/css/demo.css" />
 
-    <!-- Page CSS -->
-    <!-- Page -->
-    <link rel="stylesheet" href="assets/vendor/css/pages/page-auth.css" />
-    <!-- Helpers -->
-    <script src="assets/vendor/js/helpers.js"></script>
+  <!-- Vendors CSS -->
+  <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="assets/js/config.js"></script>
-  </head>
+  <!-- Page CSS -->
+  <!-- Page -->
+  <link rel="stylesheet" href="assets/vendor/css/pages/page-auth.css" />
+  <!-- Helpers -->
+  <script src="assets/vendor/js/helpers.js"></script>
 
-  <body>
-    <!-- Content -->
+  <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+  <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+  <script src="assets/js/config.js"></script>
+</head>
 
-    <div class="container-xxl">
-      <div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner">
-          <!-- Register -->
-          <div class="card">
-            <div class="card-body">
-              <!-- Logo -->
-              <div class="app-brand justify-content-center">
-              <img src="assets/img/stt/logo.png"  width=150px>
-                <a href="index.php?page=welcome" class="app-brand-link gap-2">
-                </a>
-              </div>
-              <!-- /Logo -->
-             
-              <p class="mb-4 text-center" >Sekolah Tinggi Teknologi Dumai</p>
+<body>
+  <!-- Content -->
 
-              <form id="formAuthentication" class="mb-3" action="" method="POST">
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email or Username</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="email"
-                    name="username"
-                    placeholder="Enter your email or username"
-                    autofocus
-                  />
-                </div>
-                <div class="mb-3 form-password-toggle">
-                  <div class="d-flex justify-content-between">
-                    <label class="form-label" for="password">Password</label>
-                  </div>
-                  <div class="input-group input-group-merge">
-                    <input
-                      type="password"
-                      id="password"
-                      class="form-control"
-                      name="password"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                      aria-describedby="password"
-                    />
-                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit" name="login">Sign in</button>
-                  <p class="text-center" style="color: red;"><?php echo $pesan; ?></p>
-                </div>
-              </form>
-
-              <p class="text-center">
-                <span>Baru di website kami ?</span>
-                <a href="daftar.php">
-                  <span>Buat Akun</span>
-                </a>
-              </p>
+  <div class="container-xxl">
+    <div class="authentication-wrapper authentication-basic container-p-y">
+      <div class="authentication-inner">
+        <!-- Register -->
+        <div class="card">
+          <div class="card-body">
+            <!-- Logo -->
+            <div class="app-brand justify-content-center">
+              <img src="assets/img/stt/logo.png" width=150px>
+              <a href="index.php?page=welcome" class="app-brand-link gap-2">
+              </a>
             </div>
+            <!-- /Logo -->
+
+            <h1 class="mb-4 text-center">AcademiX</h1>
+
+            <form id="formAuthentication" class="mb-3" action="" method="POST">
+              <div class="mb-3">
+                <label for="email" class="form-label">Username</label>
+                <input type="text" class="form-control" id="email" name="username" placeholder="Masukkan username anda "
+                  autofocus />
+                <p class="text-danger">
+                  <?php echo $pesanuser; ?>
+                </p>
+              </div>
+              <div class="mb-3 form-password-toggle">
+                <div class="d-flex justify-content-between">
+                  <label class="form-label" for="password">Password</label>
+                </div>
+                <div class="input-group input-group-merge">
+                  <input type="password" id="password" class="form-control" name="password"
+                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                    aria-describedby="password" />
+                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                </div>
+                <p class="text-danger">
+                  <?php echo $pesanpass; ?>
+                </p>
+              </div>
+              <div class="mb-3">
+                <button class="btn btn-primary d-grid w-100" type="submit" name="login">Masuk</button>
+                <p class="text-center" style="color: red;">
+                  <?php echo $pesan; ?>
+                </p>
+              </div>
+            </form>
+
+            <p class="text-center">
+              <span>Belum punya akun ?</span>
+              <a href="daftar.php">
+                <span>Buat Akun</span>
+              </a>
+            </p>
           </div>
-          <!-- /Register -->
         </div>
+        <!-- /Register -->
       </div>
     </div>
+  </div>
 
-    <!-- / Content -->
+  <!-- / Content -->
 
-    
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="assets/vendor/libs/popper/popper.js"></script>
-    <script src="assets/vendor/js/bootstrap.js"></script>
-    <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
+  <!-- Core JS -->
+  <!-- build:js assets/vendor/js/core.js -->
+  <script src="assets/vendor/libs/jquery/jquery.js"></script>
+  <script src="assets/vendor/libs/popper/popper.js"></script>
+  <script src="assets/vendor/js/bootstrap.js"></script>
+  <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <!-- Vendors JS -->
+  <script src="assets/vendor/js/menu.js"></script>
+  <!-- endbuild -->
 
-    <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+  <!-- Vendors JS -->
 
-    <!-- Page JS -->
+  <!-- Main JS -->
+  <script src="assets/js/main.js"></script>
 
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </body>
+  <!-- Page JS -->
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+
 </html>
