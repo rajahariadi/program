@@ -37,7 +37,7 @@ if (isset($_POST['daftar'])) {
       $pesan = "Username sudah ada. Silakan pilih username lain.";
     } else {
       // Jika username belum ada, lakukan pendaftaran
-      $data = "INSERT INTO tb_login (nama, username, password, level) VALUES ('$nama', '$username', '$password','user')";
+      $data = "INSERT INTO tb_login (nama, username, password, level) VALUES ('$nama', '$username', '$password','User')";
       $hasil = mysqli_query($koneksi, $data);
       if ($hasil) {
         header("location:login.php");
