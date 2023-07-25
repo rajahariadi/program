@@ -30,7 +30,7 @@
                    <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" name="jenjang">
                           <option selected="">Pilih Jenjang</option>
                           <?php 
-                          $query = "SELECT * FROM jenjang";
+                          $query = "SELECT * FROM tb_jenjang";
                           $hasil = mysqli_query($koneksi, $query);
                           while ($row = mysqli_fetch_array($hasil)){
                             ?>
