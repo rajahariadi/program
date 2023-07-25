@@ -91,7 +91,7 @@ if (isset($_POST['edit'])) {
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Username</label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" id="username" name="username" value="<?php echo $ary['username']; ?>" readonly />
+					<input type="text" class="form-control" id="username" name="username" value="<?php echo $ary['username']; ?>"  />
 					<p class="col-form-label" style="color: red;">
 						<?php echo $pesanuser ?>
 					</p>
@@ -102,7 +102,7 @@ if (isset($_POST['edit'])) {
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Password</label>
 				<div class="col-sm-6">
-					<input type="password" class="form-control" id="pass" name="password" value="<?php echo $ary['password']; ?>" readonly />
+					<input type="password" class="form-control" id="pass" name="password" value="<?php echo $ary['password']; ?>"  />
 					<input id="mybutton" onclick="change()" type="checkbox" class="form-checkbox"> Lihat Password
 					<p class="col-form-label" style="color: red;">
 						<?php echo $pesanpass ?>

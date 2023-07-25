@@ -32,10 +32,13 @@ if (isset($_POST['login'])) {
         $_SESSION['username'] = $userForm;
         $_SESSION['level'] = "Administrator";
         header("location:index.php?page=welcome");
-      } else if ($data['level'] == "User") {
+      } elseif ($data['level'] == "User") {
         $_SESSION['username'] = $userForm;
         $_SESSION['level'] = "User";
         header("location:index.php?page=welcome");
+      } elseif ($data['level'] == "Super Admin"){
+        $_SESSION['username'] = $userForm;
+        $_SESSION['level'] = "Super Admin";
       }
     } else {
       $pesan = "Username atau password salah";
