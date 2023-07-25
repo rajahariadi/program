@@ -1,12 +1,11 @@
 <?php
 include 'proses/koneksi.php';
+$jurusan = $_POST['nm_jurusan'];
+$sarpras = $_POST['sarpras'];
+$jenjang = $_POST['jj'];
+$akre = $_POST['akreditasi'];
 
-    $kode = $_POST['kode'];
-    $jurusan = $_POST['nm_jurusan'];
-    $sks = $_POST['jm_sks'];
-    $jenjang = $_POST['jj'];
-
-    mysqli_query($koneksi, "UPDATE jurusan SET kode='$kode', nm_jurusan='$jurusan', jm_sks='$sks', jj='$jenjang' WHERE kode='$kode'");
+    mysqli_query($koneksi, "UPDATE jurusan SET nm_jurusan='$jurusan', sarpras ='$sarpras', jj='$jenjang', akreditasi = '$akre' WHERE kode='$kode'");
 
 echo "Data Berhasil Di Update";
 echo '<br>';
