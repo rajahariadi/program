@@ -7,8 +7,10 @@ include "koneksi.php";
 
 $q = "INSERT INTO tb_kelas (kelas, nm_jurusan) VALUES ('$kelas', '$nm_jurusan')";
 
-mysqli_query($koneksi, $q);
-echo "Data Berhasil Ditambahkan";
-echo '<br>';
-echo '<a href="index.php?page=kelas"><button class="btn btn-outline-primary" type="submit" name="input" id="button-addon1">Kembali</button></a>';
+if (mysqli_query($koneksi, $q)) {
+    echo '<meta http-equiv="refresh" content="3;url=index.php?page=kelas">';
+    echo 'Data added successfully. Redirecting... Please wait.';
+} else {
+    echo 'Error: ' . mysqli_error($koneksi);
+}
 ?>

@@ -29,7 +29,8 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Jurusan</label>
             <div class="col-sm-6">
-                <select name="nm_jurusan" class="form-control">
+                <select name="nm_jurusan" class="form-control" required>
+                    <option value="" disabled selected>Pilih jurusan</option>
                     <?php
                     $sql = "SELECT nm_jurusan FROM jurusan";
                     foreach ($data_array as $data) {
@@ -41,11 +42,17 @@
                 </select>
             </div>
         </div>
-<br>
+
+        <br>
+
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Kelas</label>
             <div class="col-sm-6">
-                <input type="text" name="kelas" class="form-control" id="defaultFormControlInput" aria-describedbySS="defaultFormControlHelp" value="<?php echo $ary['kelas'] ?>">
+                <select class="form-control" id="defaultFormControlSelect" name="kelas" required>
+                    <option value="" disabled <?php if (empty($ary['kelas'])) { echo 'selected'; } ?>>Pilih Kelas</option>
+                    <option value="Pagi" <?php if ($ary['kelas'] == 'Pagi') { echo 'selected'; } ?>>Pagi</option>
+                    <option value="Sore" <?php if ($ary['kelas'] == 'Sore') { echo 'selected'; } ?>>Sore</option>
+                </select>
             </div>
         </div>
 
