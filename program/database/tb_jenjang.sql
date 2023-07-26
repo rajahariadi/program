@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Jul 2023 pada 13.25
+-- Waktu pembuatan: 26 Jul 2023 pada 17.54
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.9
 
@@ -28,20 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_jenjang` (
-  `id_jenjang` int(3) NOT NULL,
-  `nama_jenjang` varchar(20) NOT NULL
+  `id_jenjang` int(11) NOT NULL,
+  `nm_jenjang` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tb_jenjang`
 --
 
-INSERT INTO `tb_jenjang` (`id_jenjang`, `nama_jenjang`) VALUES
-(1, 'Diploma III'),
-(2, 'Diploma IV'),
-(3, 'Strata I'),
-(4, 'Strata II'),
-(5, 'Strata III');
+INSERT INTO `tb_jenjang` (`id_jenjang`, `nm_jenjang`) VALUES
+(1, 'D3'),
+(2, 'S1'),
+(3, 'S2'),
+(4, 'S3');
 
 --
 -- Indexes for dumped tables
@@ -61,7 +60,7 @@ ALTER TABLE `tb_jenjang`
 -- AUTO_INCREMENT untuk tabel `tb_jenjang`
 --
 ALTER TABLE `tb_jenjang`
-  MODIFY `id_jenjang` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_jenjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
