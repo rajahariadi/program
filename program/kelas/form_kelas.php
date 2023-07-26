@@ -33,17 +33,13 @@ if (isset($_POST['Simpan'])) {
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<div class="card">
+  <div class="card-body">
 
-<head>
-
-</head>
-
-<body>
     <h3 class="card-title"> <i class="fa fa-edit"></i> Input Data Kelas</h3>
     <form action="" method="post" enctype="multipart/form-data">
         <div class="card-body">
+<br>
             <?php
             $query = "SELECT nm_jurusan FROM jurusan";
             $result = mysqli_query($koneksi, $query);
@@ -95,6 +91,5 @@ if (isset($_POST['Simpan'])) {
             <a href="?page=kelas" title="Kembali" class="btn btn-secondary">Batal</a>
         </div>
     </form>
-</body>
-
-</html>
+    </div>
+</div>

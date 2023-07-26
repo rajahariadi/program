@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Data Kelas</title>
-</head>
-<body>
+<div class="card">
+  <div class="card-body">
+
     <?php
     include "proses/koneksi.php";
     $kode = $_REQUEST['kode'];
@@ -16,7 +11,7 @@
     <h3 class="card-title"><i class="fa fa-edit"></i> Update Data Kelas</h3>
     <form action="index.php?page=kelas/proses/ex_edit" method="POST" enctype="multipart/form-data">
         <input type="hidden" value="<?php echo $ary['id_kelas'] ?>" name="id_kelas">
-
+<br><br>
         <?php
         $query = "SELECT nm_jurusan FROM jurusan";
         $result = mysqli_query($koneksi, $query);
@@ -55,11 +50,11 @@
                 </select>
             </div>
         </div>
-
+<br><br>
         <div class="card-footer">
             <input type="submit" name="Simpan" value="Simpan" class="btn btn-info">
             <a href="?page=kelas" title="Kembali" class="btn btn-secondary">Batal</a>
         </div>
     </form>
-</body>
-</html>
+    </div>
+</div>
