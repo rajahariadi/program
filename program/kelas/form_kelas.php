@@ -1,13 +1,48 @@
+<?php
+$pesanjurusan = "";
+$pesankelas = "";
+
+if (isset($_POST['Simpan'])) {
+    if (isset($_POST['nm_jurusan'])) {
+        $jurusan = $_POST['nm_jurusan'];
+    } else {
+        $jurusan = "";
+    }
+
+    if (isset($_POST['kelas'])) {
+        $kelas = $_POST['kelas'];
+    } else {
+        $kelas = "";
+    }
+
+    if (empty($jurusan) && empty($kelas)) {
+        $pesanjurusan = "Jurusan harus diisi";
+        $pesankelas = "Kelas harus diisi";
+    } elseif (empty($jurusan)) {
+        $pesanjurusan = "Jurusan harus diisi";
+    } elseif (empty($kelas)) {
+        $pesankelas = "Kelas harus diisi";
+    } else {
+        $jurusan = mysqli_real_escape_string($koneksi, $jurusan);
+        $kelas = mysqli_real_escape_string($koneksi, $kelas);
+
+        $q = "INSERT INTO tb_kelas (kelas, nm_jurusan) VALUES ('$kelas', '$jurusan')";
+        $hasil = mysqli_query($koneksi, $q);
+
+        echo '<script>window.location.href = "index.php?page=kelas";</script>';
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    
+
 </head>
 
 <body>
     <h3 class="card-title"> <i class="fa fa-edit"></i> Input Data Kelas</h3>
-    <form action="index.php?page=kelas/proses/ex_kelas" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="card-body">
             <?php
             $query = "SELECT nm_jurusan FROM jurusan";
@@ -21,7 +56,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Jurusan</label>
                 <div class="col-sm-6">
-                    <select name="nm_jurusan" class="form-control" required>
+                    <select name="nm_jurusan" class="form-control">
                         <option value="" disabled selected>Pilih jurusan</option>
                         <?php
                         $sql = "SELECT nm_jurusan FROM jurusan";
@@ -31,6 +66,9 @@
                         }
                         ?>
                     </select>
+                    <p class="col-form-label" style="color: red;">
+                        <?php echo $pesanjurusan ?>
+                    </p>
                 </div>
             </div>
 
@@ -39,11 +77,14 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Kelas</label>
                 <div class="col-sm-6">
-                    <select class="form-control" id="defaultFormControlSelect" name="kelas" required>
+                    <select class="form-control" id="defaultFormControlSelect" name="kelas">
                         <option value="" disabled selected>Pilih Kelas</option>
                         <option value="Pagi">Pagi</option>
                         <option value="Sore">Sore</option>
                     </select>
+                    <p class="col-form-label" style="color: red;">
+                        <?php echo $pesankelas ?>
+                    </p>
                 </div>
             </div>
 
