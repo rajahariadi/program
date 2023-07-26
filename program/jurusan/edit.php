@@ -6,6 +6,8 @@
   </div>
   <?php
   include "proses/koneksi.php";
+  $query_jenjang = "SELECT * FROM tb_jenjang";
+  $result_jenjang = mysqli_query($koneksi, $query_jenjang);
 
   // Ambil kode jurusan dari URL
   $kode = $_REQUEST['kode'];
@@ -27,7 +29,7 @@
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Nama Jurusan</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" id="" name="jurusan" value="<?php echo $ary['nm_jurusan']; ?>" required/>
+          <input type="text" class="form-control" id="" name="jurusan" value="<?php echo $ary['nm_jurusan']; ?>"/>
         </div>
       </div>
       <br>
@@ -36,26 +38,34 @@
         <label class="col-sm-2 col-form-label">Sarana & Prasarana</label>
         <div class="col-sm-6">
           <input type="text" class="form-control" id="" name="sarpras"
-            value="<?php echo $ary['sarpras']; ?>" required/>
+            value="<?php echo $ary['sarpras']; ?>"/>
         </div>
       </div>
       <br>
 
-    <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Jenjang</label>
+       <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Akreditasi</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="" name="jenjang" value="<?php echo $ary['jj']; ?>" required/>
+                    <input type="text" class="form-control" id="" name="akre" placeholder="Akreditasi Jurusan" value="<?php echo $ary['akreditasi']; ?>"/>
                 </div>
             </div>
             <br>
 
-<div class="form-group row">
-                <label class="col-sm-2 col-form-label">Akreditasi</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" id="" name="akre" value="<?php echo $ary['akreditasi']; ?>"required>
+      <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Jenjang</label>
+                <div class="col-sm-4">
+                <select name="jenjang" id="jenjang" class="form-control" ?>">
+                <?php
+                // Tampilkan data jenjang dalam pilihan dropdown
+                while ($row = mysqli_fetch_assoc($result_jenjang)) {
+                    echo "<option value='" . $row['id_jenjang'] . "'>" . $row['nm_jenjang'] . "</option>";
+                }
+                ?>
+                 </select>
                 </div>
             </div>
             <br>
+
 
 </div>
 <div class="card-footer">
