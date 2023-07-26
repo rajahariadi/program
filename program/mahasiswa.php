@@ -12,15 +12,15 @@
           <i class="fa fa-edit"></i> Tambah Data</a>
       </div>
       <br>
-      <table id="example1" class="table table-bordered table-striped">
+      <table id="example1" class="table table-bordered table-striped" >
         <thead>
           <tr>
             <th>Nim</th>
             <th>Nama</th>
             <th>Jurusan</th>
             <th>Kelas</th>
-            <th>Jenis Kelamin</th>
-            <th>No Telp</th>
+            <th>Gender</th>
+            <th>No.Telp</th>
             <th>Alamat</th>
             <th>Foto</th>
             <th>Aksi</th>
@@ -36,7 +36,6 @@
           while ($row = mysqli_fetch_array($data)) {
 
           ?>
-
             <tr>
               <td>
                 <?php echo $row['nim'] ?>
@@ -63,12 +62,14 @@
                 <a href="mahasiswa/foto/<?php echo $row['foto'] ?>">Download</a>
               </td>
               <td>
+              <div class="button-container" style="display: flex; gap: 5px;">
                 <a href="index.php?page=mahasiswa/edit&kode=<?php echo $row['id'] ?>" title="Ubah" class="btn btn-success btn-sm">
                   <i class="fa fa-edit"></i>
                 </a>
-                <a href="mahasiswa/hapus.php?id=<?php echo $row['id'] ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" title="Hapus" class="btn btn-danger btn-sm">
+                <a href="index.php?page=mahasiswa/hapus&kode=<?php echo $row['id'] ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" title="Hapus" class="btn btn-danger btn-sm">
                   <i class="fa fa-trash"></i>
                 </a>
+              </div>
               </td>
             </tr>
 

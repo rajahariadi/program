@@ -1,5 +1,5 @@
 <?php
-// if (isset($_POST['mhsw'])){
+
 
 $nim = $_POST['nim'];
 $nama = $_POST['nama'];
@@ -22,7 +22,7 @@ $q = "INSERT INTO tb_mahasiswa (nim, nama, jenis_kelamin, no_telp, alamat, foto,
 mysqli_query($koneksi, $q);
 
 header("location:../index.php?page=mahasiswa");
-ob_end_flush();
+
 
 
 ?>
