@@ -24,55 +24,43 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jurusan`
+-- Struktur dari tabel `tb_akreditasi`
 --
 
-CREATE TABLE `jurusan` (
-  `kode` int(11) NOT NULL,
-  `nm_jurusan` varchar(100) DEFAULT NULL,
-  `sarpras` varchar(100) DEFAULT NULL,
-  `akreditasi` varchar(10) DEFAULT NULL,
-  `jj` int(11) DEFAULT NULL
+CREATE TABLE `tb_akreditasi` (
+  `id_akre` int(11) NOT NULL,
+  `nm_akre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `jurusan`
+-- Dumping data untuk tabel `tb_akreditasi`
 --
 
-INSERT INTO `jurusan` (`kode`, `nm_jurusan`, `sarpras`, `akreditasi`, `jj`) VALUES
-(34, 'Teknik Mesin', 'Mesin Bubut', '2', 3);
+INSERT INTO `tb_akreditasi` (`id_akre`, `nm_akre`) VALUES
+(1, 'Unggul'),
+(2, 'Baik Sekali'),
+(3, 'Baik'),
+(4, 'Tidak Terakreditasi');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `jurusan`
+-- Indeks untuk tabel `tb_akreditasi`
 --
-ALTER TABLE `jurusan`
-  ADD PRIMARY KEY (`kode`),
-  ADD KEY `jj` (`jj`),
-  ADD KEY `akreditasi` (`akreditasi`);
+ALTER TABLE `tb_akreditasi`
+  ADD PRIMARY KEY (`id_akre`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT untuk tabel `jurusan`
+-- AUTO_INCREMENT untuk tabel `tb_akreditasi`
 --
-ALTER TABLE `jurusan`
-  MODIFY `kode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
---
-
---
--- Ketidakleluasaan untuk tabel `jurusan`
---
-ALTER TABLE `jurusan`
-  ADD CONSTRAINT `jurusan_ibfk_1` FOREIGN KEY (`jj`) REFERENCES `tb_jenjang` (`id_jenjang`);
+ALTER TABLE `tb_akreditasi`
+  MODIFY `id_akre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
