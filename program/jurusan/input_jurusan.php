@@ -44,12 +44,16 @@ if (isset($_POST['input'])) {
     } elseif (empty($akre)) {
         $pesanakre = "Akreditasi harus diisi";
     } else {
-        $q = "INSERT INTO jurusan (kode, nm_jurusan, sarpras, akreditasi, jj) VALUES (NULL, '$jurusan', '$sarpras', '$akre', '$jenjang')";
+        $check_query = "SELECT * FROM jurusan WHERE nm_jurusan = '$jurusan'";
+        $check_result = mysqli_query($koneksi, $check_query);
 
-
-        mysqli_query($koneksi, $q);
-
-        echo '<script>window.location.href = "index.php?page=jurusan";</script>';
+        if (mysqli_num_rows($check_result) > 0) {
+            $pesan = "Jurusan sudah ada. Silahkan masukkan jurusan yang lain.";
+        } else {
+            $q = "INSERT INTO jurusan (kode, nm_jurusan, sarpras, akreditasi, jj) VALUES (NULL, '$jurusan', '$sarpras', '$akre', '$jenjang')";
+            mysqli_query($koneksi, $q);
+            echo '<script>window.location.href = "index.php?page=jurusan";</script>';
+        }
     }
 }
 
@@ -74,6 +78,7 @@ $result_akre = mysqli_query($koneksi, $query_akre);
                     <input type="text" class="form-control" id="" name="jurusan" placeholder="Nama jurusan" />
                     <p class="col-form-label" style="color: red;">
                         <?php echo $pesanjurusan ?>
+                        <?php echo $pesan ?>
                     </p>
                 </div>
             </div>
@@ -84,7 +89,7 @@ $result_akre = mysqli_query($koneksi, $query_akre);
                 <div class="col-sm-6">
                     <textarea type="text" class="form-control" id="" name="sarpras"
                         placeholder="Sarana dan Prasarana"></textarea>
-                        <p class="col-form-label" style="color: red;">
+                    <p class="col-form-label" style="color: red;">
                         <?php echo $pesansarpras ?>
                     </p>
                 </div>
@@ -94,8 +99,8 @@ $result_akre = mysqli_query($koneksi, $query_akre);
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Akreditasi</label>
                 <div class="col-sm-4">
-                    <select name="akre" id="akre" class="form-control" >
-                    <option value="">- Pilih -</option>
+                    <select name="akre" id="akre" class="form-control">
+                        <option value="">- Pilih -</option>
                         <?php
                         // Tampilkan data akreditasi dalam pilihan dropdown
                         while ($row = mysqli_fetch_assoc($result_akre)) {
@@ -113,8 +118,8 @@ $result_akre = mysqli_query($koneksi, $query_akre);
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Jenjang</label>
                 <div class="col-sm-4">
-                    <select name="jenjang" id="jenjang" class="form-control" >
-                    <option value="">- Pilih -</option>
+                    <select name="jenjang" id="jenjang" class="form-control">
+                        <option value="">- Pilih -</option>
                         <?php
                         // Tampilkan data jenjang dalam pilihan dropdown
                         while ($row = mysqli_fetch_assoc($result_jenjang)) {
