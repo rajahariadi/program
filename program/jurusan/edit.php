@@ -53,8 +53,9 @@
                     <select name="akre" id="akre" class="form-control" required>
                 <?php
                 // Tampilkan data akreditasi dalam pilihan dropdown
-                while ($row = mysqli_fetch_assoc($result_akre)) {
-                    echo "<option value='" . $row['id_akre'] . "'>" . $row['nm_akre'] . "</option>";
+                while ($row_akre = mysqli_fetch_assoc($result_akre)) {
+                    $selected = ($ary['akreditasi'] == $row_akre['id_akre']) ? "selected" : "";
+                    echo "<option value='" . $row_akre['id_akre'] . "' $selected>" . $row_akre['nm_akre'] . "</option>";
                 }
                 ?>
                  </select>
@@ -68,8 +69,9 @@
                 <select name="jenjang" id="jenjang" class="form-control" ?>">
                 <?php
                 // Tampilkan data jenjang dalam pilihan dropdown
-                while ($row = mysqli_fetch_assoc($result_jenjang)) {
-                    echo "<option value='" . $row['id_jenjang'] . "'>" . $row['nm_jenjang'] . "</option>";
+                while ($row_jenjang = mysqli_fetch_assoc($result_jenjang)) {
+                    $selected = ($ary['jj'] == $row_jenjang['id_jenjang']) ? "selected" : "";
+                    echo "<option value='" . $row_jenjang['id_jenjang'] . "' $selected>" . $row_jenjang['nm_jenjang'] . "</option>";
                 }
                 ?>
                  </select>
