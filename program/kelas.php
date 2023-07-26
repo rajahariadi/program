@@ -5,13 +5,13 @@
     $no = 1;
     if ($_SESSION['level'] == 'Administrator') { 
         ?>
+        <br>
         <div>
         <a href="index.php?page=kelas/form_kelas" class="btn btn-primary">
         <i class="fa fa-edit"></i> Tambah Data Kelas</a>
         </div>
-    <br>
     <?php } ?>
-    <br><br>
+    <br>
     <div class="table-responsive">
         <table id="example1" class="table table-bordered table-striped">
             <thead>
