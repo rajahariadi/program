@@ -6,11 +6,11 @@
   </div>
   <?php
   include "proses/koneksi.php";
+    // Ambil kode jurusan dari URL
+  $kode = $_GET['kode'];
   $query_jenjang = "SELECT * FROM tb_jenjang";
   $result_jenjang = mysqli_query($koneksi, $query_jenjang);
-
-  // Ambil kode jurusan dari URL
-  $kode = $_REQUEST['kode'];
+  $query_jurusan = "SELECT * FROM jurusan WHERE kode='$kode'";
 
   // Query untuk mendapatkan data jurusan berdasarkan kode
   $q = mysqli_query($koneksi, "SELECT * FROM jurusan WHERE kode='$kode'");
@@ -24,8 +24,10 @@
   }
   ?>
   <form action="jurusan/ex_edit.php" method="post" enctype="multipart/form-data">
+
     <div class="card-body">
-      <input type='hidden' class="form-control" name="id" value="<?php echo $ary['kode']; ?>" />
+      <input type='hidden' class="form-control" name="kode" value="<?php echo $ary['kode']; ?>" />
+
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Nama Jurusan</label>
         <div class="col-sm-6">

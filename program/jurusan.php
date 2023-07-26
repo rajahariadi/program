@@ -60,7 +60,7 @@
                                     class="btn btn-success btn-sm">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="jurusan/hapus.php?id=<?php echo $row['kode'] ?>"
+                                <a href="index.php?page=jurusan/hapus&kode=<?php echo $row['kode'] ?>"
                                     onclick="return confirm('Apakah anda yakin hapus data ini ?')" title="Hapus"
                                     class="btn btn-danger btn-sm">
                                     <i class="fa fa-trash"></i>
