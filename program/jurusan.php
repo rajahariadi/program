@@ -27,12 +27,15 @@
                     </tr>
                 </thead>
                 <tbody>
+
+
                     <?php
                     include "jurusan/proses/koneksi.php";
                     $no = 1;
-                    $query = "SELECT j.kode, j.nm_jurusan, j.sarpras, j.akreditasi, jj.nm_jenjang AS jenjang
+                    $query = "SELECT j.kode, j.nm_jurusan, j.sarpras, j.akreditasi, jj.nm_jenjang AS jenjang, a.nm_akre AS akreditasi_nama
                     FROM jurusan j
-                    INNER JOIN tb_jenjang jj ON j.jj = jj.id_jenjang";
+                    INNER JOIN tb_jenjang jj ON j.jj = jj.id_jenjang
+                    INNER JOIN tb_akreditasi a ON j.akreditasi = a.id_akre";
                     $result = mysqli_query($koneksi, $query);
 
                             // Tampilkan data jurusan ke dalam tabel
@@ -50,7 +53,7 @@
                                 <?php echo $row['sarpras'] ?>
                             </td>
                             <td>
-                                <?php echo $row['akreditasi'] ?>
+                                <?php echo $row['akreditasi_nama'] ?>
                             </td>
                             <td>
                                 <?php echo $row['jenjang'] ?>
