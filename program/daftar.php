@@ -64,7 +64,7 @@ if (isset($_POST['daftar'])) {
   <meta name="description" content="" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="assets/img/stt/logo.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -111,7 +111,7 @@ if (isset($_POST['daftar'])) {
               </a>
             </div>
             <!-- /Logo -->
-            <p class="mb-4 text-center">Academix</p>
+            <h1 class="mb-4 text-center">AcademiX</h1>
 
             <form id="formAuthentication" class="mb-3" action="" method="POST">
               <div class="mb-3">

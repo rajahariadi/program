@@ -23,13 +23,24 @@ if (isset($_POST['Simpan'])) {
     } elseif (empty($kelas)) {
         $pesankelas = "Kelas harus diisi";
     } else {
-        $jurusan = mysqli_real_escape_string($koneksi, $jurusan);
-        $kelas = mysqli_real_escape_string($koneksi, $kelas);
+        // Lakukan pengecekan apakah jurusan dan kelas telah ada sebelumnya di database
+        $q_check = "SELECT * FROM tb_kelas WHERE nm_jurusan='$jurusan' AND kelas='$kelas'";
+        $result_check = mysqli_query($koneksi, $q_check);
 
-        $q = "INSERT INTO tb_kelas (kelas, nm_jurusan) VALUES ('$kelas', '$jurusan')";
-        $hasil = mysqli_query($koneksi, $q);
+        if (mysqli_num_rows($result_check) > 0) {
+            // Jika data telah ada, tampilkan pesan error
+            $pesanjurusan = "Jurusan dan kelas sudah ada";
+            $pesankelas = "Jurusan dan kelas sudah ada";
+        } else {
+            // Jika data belum ada, tambahkan data ke database
+            $jurusan = mysqli_real_escape_string($koneksi, $jurusan);
+            $kelas = mysqli_real_escape_string($koneksi, $kelas);
 
-        echo '<script>window.location.href = "index.php?page=kelas";</script>';
+            $q = "INSERT INTO tb_kelas (kelas, nm_jurusan) VALUES ('$kelas', '$jurusan')";
+            $hasil = mysqli_query($koneksi, $q);
+
+            echo '<script>window.location.href = "index.php?page=kelas";</script>';
+        }
     }
 }
 ?>

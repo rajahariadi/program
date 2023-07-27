@@ -7,10 +7,12 @@
     <!-- /.card-header -->
     <div class="card-body">
         <div class="table-responsive">
+        <?php if ($_SESSION['level'] == 'Administrator') { ?>
             <div>
                 <a href="index.php?page=jurusan/input_jurusan" class="btn btn-primary">
                     <i class="fa fa-edit"></i> Tambah Data Jurusan</a>
             </div>
+            <?php } ?>
             <br>
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -20,7 +22,9 @@
                         <th>Sarana dan Prasarana</th>
                         <th>Akreditasi</th>
                         <th>Jenjang</th>
-                        <th>Aksi</th>
+                        <?php if ($_SESSION['level'] == 'Administrator') { ?>
+                            <th>Aksi</th>
+                        <?php } ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,6 +59,7 @@
                             <td>
                                 <?php echo $row['jenjang'] ?>
                             </td>
+                            <?php if ($_SESSION['level'] == 'Administrator') { ?>
                             <td>
                                 <a href="index.php?page=jurusan/edit&kode=<?php echo $row['kode'] ?>" title="Ubah"
                                     class="btn btn-success btn-sm">
@@ -66,6 +71,7 @@
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>
+                            <?php } ?>
                         </tr>
 
                         <?php

@@ -144,15 +144,20 @@ if (isset($_POST['Simpan'])) {
       </div>
       <br>
 
-      <div class="col-md">
-        <label for="jeniskelamin" name="jeniskelamin" class="form-label">Jenis Kelamin </label>
-        <div class="form-check mt-3">
-          <input name="jeniskelamin" class="form-check-input" type="radio" value="LakiLaki" id="defaultRadio1">
-          <label class="form-check-label" for="defaultRadio1"> Laki-Laki </label>
-        </div>
-        <div class="form-check">
-          <input name="jeniskelamin" class="form-check-input" type="radio" value="Perempuan" id="defaultRadio2">
-          <label class="form-check-label" for="defaultRadio2"> Perempuan </label>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
+        <div class="col-sm-4">
+          <div class="form-check">
+            <input name="jeniskelamin" class="form-check-input" type="radio" value="Laki-Laki" id="defaultRadio1">
+            <label class="form-check-label" for="defaultRadio1"> Laki-Laki </label>
+          </div>
+          <div class="form-check">
+            <input name="jeniskelamin" class="form-check-input" type="radio" value="Perempuan" id="defaultRadio2">
+            <label class="form-check-label" for="defaultRadio2"> Perempuan </label>
+          </div>
+          <p class="col-form-label" style="color: red;">
+            <?php echo $pesangender ?>
+          </p>
         </div>
       </div>
       <br>

@@ -7,14 +7,18 @@
   <!-- /.card-header -->
   <div class="card-body">
     <div class="table-responsive">
+    <?php if ($_SESSION['level'] == 'Administrator') { ?>
       <div>
         <a href="index.php?page=mahasiswa/input_mahasiswa" class="btn btn-primary">
           <i class="fa fa-edit"></i> Tambah Data</a>
       </div>
+      <?php } ?>
       <br>
-      <table id="example1" class="table table-bordered table-striped" >
+      <table id="example1" class="table table-bordered table-striped">
         <thead>
+          <?php $no = 1; ?>
           <tr>
+            <th>No</th>
             <th>Nim</th>
             <th>Nama</th>
             <th>Jurusan</th>
@@ -23,7 +27,9 @@
             <th>No.Telp</th>
             <th>Alamat</th>
             <th>Foto</th>
-            <th>Aksi</th>
+            <?php if ($_SESSION['level'] == 'Administrator') { ?>
+              <th>Aksi</th>
+            <?php } ?>
           </tr>
         </thead>
         <tbody>
@@ -35,8 +41,11 @@
 
           while ($row = mysqli_fetch_array($data)) {
 
-          ?>
+            ?>
             <tr>
+              <td>
+                <?php echo $no++; ?>
+              </td>
               <td>
                 <?php echo $row['nim'] ?>
               </td>
@@ -61,21 +70,27 @@
               <td>
                 <a href="mahasiswa/foto/<?php echo $row['foto'] ?>">Download</a>
               </td>
+              <?php if ($_SESSION['level'] == 'Administrator') { ?>
               <td>
-              <div class="button-container" style="display: flex; gap: 5px;">
-                <a href="index.php?page=mahasiswa/edit&kode=<?php echo $row['id'] ?>" title="Ubah" class="btn btn-success btn-sm">
-                  <i class="fa fa-edit"></i>
-                </a>
-                <a href="index.php?page=mahasiswa/hapus&kode=<?php echo $row['id'] ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" title="Hapus" class="btn btn-danger btn-sm">
-                  <i class="fa fa-trash"></i>
-                </a>
-              </div>
+                <div class="button-container" style="display: flex; gap: 5px;">
+                  <a href="index.php?page=mahasiswa/edit&kode=<?php echo $row['id'] ?>" title="Ubah"
+                    class="btn btn-success btn-sm">
+                    <i class="fa fa-edit"></i>
+                  </a>
+                  <a href="index.php?page=mahasiswa/hapus&kode=<?php echo $row['id'] ?>"
+                    onclick="return confirm('Apakah anda yakin hapus data ini ?')" title="Hapus"
+                    class="btn btn-danger btn-sm">
+                    <i class="fa fa-trash"></i>
+                  </a>
+                </div>
               </td>
+              <?php
+          }
+        }
+          ?>
             </tr>
 
-          <?php
-          }
-          ?>
+            
         </tbody>
         </tfoot>
       </table>

@@ -205,16 +205,20 @@ if (isset($_POST['Ubah'])) {
         $ary = mysqli_fetch_array($q);
       }
       ?>
-      <div class="col-md">
-        <label for="jeniskelamin" name="jeniskelamin" value="<?php echo $ary['id'] ?>" class="form-label">
-          Genre </label>
-        <div class="form-check mt-3">
-          <input name="jeniskelamin" value="LakiLaki" class="form-check-input" type="radio" id="defaultRadio1" <?php echo ($ary['jenis_kelamin'] == 'LakiLaki') ? 'checked' : ''; ?>>
-          <label class="form-check-label" for="defaultRadio1"> Laki-Laki </label>
-        </div>
-        <div class="form-check">
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
+        <div class="col-sm-4">
+          <div class="form-check">
+          <input name="jeniskelamin" value="Laki-Laki" class="form-check-input" type="radio" id="defaultRadio1" <?php echo ($ary['jenis_kelamin'] == 'Laki-Laki') ? 'checked' : ''; ?>>
+            <label class="form-check-label" for="defaultRadio1"> Laki-Laki </label>
+          </div>
+          <div class="form-check">
           <input name="jeniskelamin" value="Perempuan" class="form-check-input" type="radio" id="defaultRadio2" <?php echo ($ary['jenis_kelamin'] == 'Perempuan') ? 'checked' : ''; ?>>
-          <label class="form-check-label" for="defaultRadio2"> Perempuan </label>
+            <label class="form-check-label" for="defaultRadio2"> Perempuan </label>
+          </div>
+          <p class="col-form-label" style="color: red;">
+            <?php echo $pesangender ?>
+          </p>
         </div>
       </div>
       <br>
