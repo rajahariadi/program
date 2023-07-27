@@ -1,7 +1,4 @@
-<div class="card">
-  <div class="card-body">
-
-  <div class="card card-info">
+<div class="card card-info">
     <div class="card-header">
         <h3 class="card-title">
             <i class="fa fa-table"></i> Data Jurusan
@@ -21,18 +18,25 @@
                         <th>No</th>
                         <th>Nama Jurusan</th>
                         <th>Sarana dan Prasarana</th>
-                        <th>Jenjang</th>
                         <th>Akreditasi</th>
-                        <th>Action</th>
+                        <th>Jenjang</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
 
+
                     <?php
                     include "jurusan/proses/koneksi.php";
                     $no = 1;
-                    $data = mysqli_query($koneksi, "SELECT * FROM jurusan");
-                    while ($row = mysqli_fetch_array($data)) {
+                    $query = "SELECT j.kode, j.nm_jurusan, j.sarpras, j.akreditasi, jj.nm_jenjang AS jenjang, a.nm_akre AS akreditasi_nama
+                    FROM jurusan j
+                    INNER JOIN tb_jenjang jj ON j.jj = jj.id_jenjang
+                    INNER JOIN tb_akreditasi a ON j.akreditasi = a.id_akre";
+                    $result = mysqli_query($koneksi, $query);
+
+                    // Tampilkan data jurusan ke dalam tabel
+                    while ($row = mysqli_fetch_assoc($result)) {
                         ?>
 
                         <tr>
@@ -46,17 +50,17 @@
                                 <?php echo $row['sarpras'] ?>
                             </td>
                             <td>
-                                <?php echo $row['jj'] ?>
+                                <?php echo $row['akreditasi_nama'] ?>
                             </td>
                             <td>
-                                <?php echo $row['akreditasi'] ?>
+                                <?php echo $row['jenjang'] ?>
                             </td>
                             <td>
                                 <a href="index.php?page=jurusan/edit&kode=<?php echo $row['kode'] ?>" title="Ubah"
                                     class="btn btn-success btn-sm">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="jurusan/hapus.php?kode=<?php echo $row['kode'] ?>""
+                                <a href="index.php?page=jurusan/hapus&kode=<?php echo $row['kode'] ?>"
                                     onclick="return confirm('Apakah anda yakin hapus data ini ?')" title="Hapus"
                                     class="btn btn-danger btn-sm">
                                     <i class="fa fa-trash"></i>
@@ -72,6 +76,5 @@
             </table>
         </div>
     </div>
-  </div>
 </div>
-
+<!-- /.card-body -->

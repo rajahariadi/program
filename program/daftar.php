@@ -59,7 +59,7 @@ if (isset($_POST['daftar'])) {
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>Login Basic web sekolah tinggi teknologi dumai</title>
+  <title>Academix</title>
 
   <meta name="description" content="" />
 
@@ -111,7 +111,7 @@ if (isset($_POST['daftar'])) {
               </a>
             </div>
             <!-- /Logo -->
-            <p class="mb-4 text-center">Sekolah Tinggi Teknologi Dumai</p>
+            <p class="mb-4 text-center">Academix</p>
 
             <form id="formAuthentication" class="mb-3" action="" method="POST">
               <div class="mb-3">
